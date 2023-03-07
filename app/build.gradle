@@ -3,9 +3,14 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+
 }
 
 android {
+
+
+
     namespace 'com.example.ramadan_kareem'
     compileSdk 33
 
@@ -18,7 +23,11 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    buildFeatures{
+        viewBinding true
+        dataBinding true
 
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -40,6 +49,10 @@ kapt {
 }
 
 dependencies {
+    def nav_version = "2.5.3"
+    def lifecycle_version = "2.5.1"
+    def arch_version = "2.1.0"
+
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -57,6 +70,42 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
+
+    // Kotlin navigation component
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // ViewModel utilities for Compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    // Lifecycles only (without ViewModel or LiveData)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+
+    // Saved state module for ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
+    // Annotation processor
+    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
+    // alternately - if using Java8, use the following instead of lifecycle-compiler
+    implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycle_version")
+
+    // optional - helpers for implementing LifecycleOwner in a Service
+    implementation("androidx.lifecycle:lifecycle-service:$lifecycle_version")
+
+    // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
+    implementation("androidx.lifecycle:lifecycle-process:$lifecycle_version")
+
+    // optional - ReactiveStreams support for LiveData
+    implementation("androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version")
+
+    // optional - Test helpers for LiveData
+    testImplementation("androidx.arch.core:core-testing:$arch_version")
+
+    // optional - Test helpers for Lifecycle runtime
+    testImplementation ("androidx.lifecycle:lifecycle-runtime-testing:$lifecycle_version")
 
     implementation project(path: ':data')
     implementation project(path: ':domain')

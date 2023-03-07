@@ -7,4 +7,36 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+<!--    project colors green-->
+    <color name="green50">#e8f5e9</color>
+    <color name="green100">#c8e6c9</color>
+    <color name="green200">#a5d6a7</color>
+    <color name="green300">#81c784</color>
+    <color name="green400">#66bb6a</color>
+    <color name="green500">#4caf50</color>
+    <color name="green600">#43a047</color>
+    <color name="green700">#388e3c</color>
+    <color name="green800">#2e7d32</color>
+    <color name="green900">#1b5e20</color>
+    <color name="greenA100">#b9f6ca</color>
+    <color name="greenA200">#69f0ae</color>
+    <color name="greenA400">#00e676</color>
+    <color name="greenA700">#00c853</color>
+<!--another degree of green-->
+    <color name="sencondGreen50">##e0f2f1</color>
+    <color name="sencondGreen100">#b2dfdb</color>
+    <color name="sencondGreen200">#80cbc4</color>
+    <color name="sencondGreen300">#4db6ac</color>
+    <color name="sencondGreen400">#26a69a</color>
+    <color name="sencondGreen500">#009688</color>
+    <color name="sencondGreen600">#00897b</color>
+    <color name="sencondGreen700">#00796b</color>
+    <color name="sencondGreen800">#00695c</color>
+    <color name="sencondGreen900">#004d40</color>
+    <color name="sencondGreenA100">#a7ffeb</color>
+    <color name="sencondGreenA200">#64ffda</color>
+    <color name="sencondGreenA400">#1de9b6</color>
+    <color name="sencondGreenA700">#00bfa5</color>
+
 </resources>
