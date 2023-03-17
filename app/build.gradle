@@ -107,6 +107,8 @@ dependencies {
     // optional - Test helpers for Lifecycle runtime
     testImplementation ("androidx.lifecycle:lifecycle-runtime-testing:$lifecycle_version")
 
+    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.2.0'
+
     implementation project(path: ':data')
     implementation project(path: ':domain')
 

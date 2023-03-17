@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_navigation_graph"
+    app:startDestination="@id/Home">
+
+    <fragment
+        android:id="@+id/prayer_time"
+        android:name="com.example.ramadan_kareem.ui.Prayer_time"
+        android:label="fragment_prayer_time"
+        tools:layout="@layout/fragment_prayer_time" />
+    <fragment
+        android:id="@+id/alQuran"
+        android:name="com.example.ramadan_kareem.ui.AlQuran"
+        android:label="fragment_al_quran"
+        tools:layout="@layout/fragment_al_quran" />
+    <fragment
+        android:id="@+id/Home"
+        android:name="com.example.ramadan_kareem.ui.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_search"
+            app:destination="@id/Search" />
+        <action
+            android:id="@+id/action_home_to_alQuran"
+            app:destination="@id/alQuran" />
+        <action
+            android:id="@+id/action_home_to_favourite2"
+            app:destination="@+id/favourite" />
+        <action
+            android:id="@+id/action_home_to_prayer_time"
+            app:destination="@id/prayer_time" />
+        <action
+            android:id="@+id/action_home_to_calender"
+            app:destination="@id/Calender" />
+        <action
+            android:id="@+id/action_home_to_tasbeeh"
+            app:destination="@id/tasbeeh" />
+        <action
+            android:id="@+id/action_home_to_qibla"
+            app:destination="@id/Qibla" />
+        <action
+            android:id="@+id/action_Home_to_Favourite"
+            app:destination="@id/Favourite" />
+    </fragment>
+    <fragment
+        android:id="@+id/tasbeeh"
+        android:name="com.example.ramadan_kareem.ui.Tasbeeh"
+        android:label="fragment_tasbeeh"
+        tools:layout="@layout/fragment_tasbeeh" />
+    <fragment
+        android:id="@+id/Qibla"
+        android:name="com.example.ramadan_kareem.ui.Qibla"
+        android:label="fragment_qibla"
+        tools:layout="@layout/fragment_qibla" />
+    <fragment
+        android:id="@+id/Search"
+        android:name="com.example.ramadan_kareem.ui.Search"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/Favourite"
+        android:name="com.example.ramadan_kareem.ui.Favourite"
+        android:label="fragment_favourite"
+        tools:layout="@layout/fragment_favourite" />
+    <fragment
+        android:id="@+id/Calender"
+        android:name="com.example.ramadan_kareem.ui.Calender"
+        android:label="fragment_calender"
+        tools:layout="@layout/fragment_calender" />
+</navigation>

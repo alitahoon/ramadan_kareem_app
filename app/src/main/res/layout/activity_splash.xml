@@ -35,7 +35,7 @@
             android:layout_marginBottom="100dp"
             app:cornerRadius="30dp"
             android:onClick="@{viewmodel::onCointinueBtnClicked}"
-            android:backgroundTint="@color/green800"
+            android:backgroundTint="@color/homeCardViewIconColorDark"
             android:padding="10dp"
             android:text="استمرار"
             android:fontFamily="@font/readex_pro_medium" />

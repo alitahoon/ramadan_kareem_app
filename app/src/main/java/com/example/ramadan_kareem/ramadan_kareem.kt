@@ -2,7 +2,8 @@ package com.example.ramadan_kareem
 
 import android.app.Application
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 
-@AndroidEntryPoint
+@HiltAndroidApp
 class ramadan_kareem: Application() {
 }

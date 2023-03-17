@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Home"
+    android:background="@drawable/background">
+
+    <RelativeLayout
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:padding="10dp"
+        android:layout_marginTop="100dp"
+        android:id="@+id/materialCardView"
+        android:layout_centerInParent="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+        <TextView
+            android:layout_alignParentTop="true"
+            android:id="@+id/prayer_Time_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/readex_pro_medium"
+            android:text="04:45"
+            android:textColor="@color/white"
+            android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/prayer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/prayer_Time_name"
+            android:fontFamily="@font/readex_pro_medium"
+            android:gravity="center"
+            android:text="العصر"
+            android:textColor="@color/homeCardViewIconColorDark"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/prayer_Time_along_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/prayer_name"
+            android:layout_alignEnd="@+id/prayer_name"
+            android:layout_alignBottom="@+id/prayer_Time_name"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/prayer_Time_name"
+            android:fontFamily="@font/readex_pro_medium"
+            android:gravity="center"
+            android:text="ليلا"
+            android:textColor="@color/homeCardViewIconColorDark"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/gregorian_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/prayer_Time_name"
+            android:layout_alignStart="@+id/prayer_Time_name"
+            android:layout_alignEnd="@+id/prayer_name"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/readex_pro_medium"
+            android:gravity="center"
+            android:text="الجمعة, 10 مارس 2023"
+            android:textColor="@color/homeCardViewIconColorDark"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/Islamic_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gregorian_date"
+            android:layout_alignStart="@+id/prayer_Time_name"
+            android:layout_alignEnd="@+id/prayer_Time_along_day"
+            android:fontFamily="@font/readex_pro_medium"
+            android:gravity="center"
+            android:text="18 شعبان 1444 هـ"
+            android:textColor="@color/homeCardViewIconColorDark"
+            android:textSize="14sp" />
+
+        <TextView
+            android:lineHeight="20dp"
+            android:id="@+id/ramadan_routine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Islamic_date"
+            android:layout_alignStart="@+id/prayer_Time_name"
+            android:layout_alignEnd="@+id/prayer_Time_along_day"
+            android:fontFamily="@font/readex_pro_medium"
+            android:gravity="center"
+            android:text="موعد الافطار : 1 ساعه 13 دقيقه"
+            android:textColor="@color/homeCardViewIconColorDark"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView2"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:cardCornerRadius="20dp"
+        android:layout_marginHorizontal="15dp"
+        android:backgroundTint="@color/homeCardViewBackgroundDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView">
+
+
+        <RelativeLayout
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ToggleButton
+                android:id="@+id/toggleButton1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_above="@id/prayer_time_estimat_widged"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/toggle_selector"
+                android:checked="true"
+                android:text=""
+                android:textOff=""
+                android:textOn="" />
+
+            <TextView
+                android:id="@+id/prayer_time_widged"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/progressBar"
+                android:text="صلاه العصر"
+                android:layout_margin="5dp"
+                android:fontFamily="@font/readex_pro_medium"
+                android:textColor="@color/homeCardViewIconColorDark"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/prayer_time_estimat_widged"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/progressBar"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/readex_pro_medium"
+                android:text="2:30:14"
+                android:textColor="@color/homeCardViewIconColorDark"
+                android:textSize="12sp" />
+
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@style/Widget.Material3.LinearProgressIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:background="@drawable/progress_bar_background_rec"
+                android:indeterminate="false"
+                android:max="100"
+                android:progressBackgroundTint="@color/homeBackgroundColorDark"
+                android:padding="2dp"
+                android:progress="30"
+                android:progressDrawable="@drawable/curved_progress_bar_rec" />
+
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/qibla_card"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="30dp"
+        android:backgroundTint="@color/homeCardViewBackgroundDark"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/calender_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/materialCardView2"
+        app:strokeColor="@color/homeCardViewIconColorDark"
+        app:strokeWidth="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/qibla"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/qibla" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/qibla"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:fontFamily="@font/readex_pro_medium"
+                android:gravity="center"
+                android:text="القبله"
+                android:textColor="@color/homeCardViewIconColorDark"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/calender_card"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="30dp"
+        android:backgroundTint="@color/homeCardViewBackgroundDark"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/materialCardView2"
+        app:strokeColor="@color/homeCardViewIconColorDark"
+        app:strokeWidth="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/calender"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/calender_card_view" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/calender"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:fontFamily="@font/readex_pro_medium"
+                android:gravity="center"
+                android:text="التقويم"
+                android:textColor="@color/homeCardViewIconColorDark"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/quran_card"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="30dp"
+        android:backgroundTint="@color/homeCardViewBackgroundDark"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/calender_card"
+        app:layout_constraintTop_toBottomOf="@id/materialCardView2"
+        app:strokeColor="@color/homeCardViewIconColorDark"
+        app:strokeWidth="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/quran"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/quran_2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/quran"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:fontFamily="@font/readex_pro_medium"
+                android:gravity="center"
+                android:text="القران"
+                android:textColor="@color/homeCardViewIconColorDark"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/hadeeth_card"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/homeCardViewBackgroundDark"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/duaa_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/qibla_card"
+        app:strokeColor="@color/homeCardViewIconColorDark"
+        app:strokeWidth="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/hadeeth"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/quran" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/hadeeth"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:fontFamily="@font/readex_pro_medium"
+                android:gravity="center"
+                android:text="الاحاديث"
+                android:textColor="@color/homeCardViewIconColorDark"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/duaa_card"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/homeCardViewBackgroundDark"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calender_card"
+        app:strokeColor="@color/homeCardViewIconColorDark"
+        app:strokeWidth="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/duaa"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/duaa" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/duaa"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:fontFamily="@font/readex_pro_medium"
+                android:gravity="center"
+                android:text="الادعيه"
+                android:textColor="@color/homeCardViewIconColorDark"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/prayer_card"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/homeCardViewBackgroundDark"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/duaa_card"
+        app:layout_constraintTop_toBottomOf="@id/quran_card"
+        app:strokeColor="@color/homeCardViewIconColorDark"
+        app:strokeWidth="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/prayer"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/mosque_2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/prayer"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:fontFamily="@font/readex_pro_medium"
+                android:gravity="center"
+                android:text="الصلاه"
+                android:textColor="@color/homeCardViewIconColorDark"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
