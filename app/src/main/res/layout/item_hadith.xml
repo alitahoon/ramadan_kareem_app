@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="@dimen/_20sdp"
+    app:cardCornerRadius="@dimen/_16sdp"
+    android:layout_marginBottom="@dimen/_16sdp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/homeCardViewIconColorDark"
+    android:backgroundTint="@color/homeCardViewBackgroundDark">
+
+    <TextView
+        android:id="@+id/tv_hadith"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى، فَمَنْ كَانَتْ هِجْرَتُهُ إِلَى دُنْيَا يُصِيبُهَا أَوْ إِلَى امْرَأَةٍ يَنْكِحُهَا فَهِجْرَتُهُ إِلَى مَا هَاجَرَ إِلَيْهِ"
+        android:padding="@dimen/_12sdp"
+        android:textSize="@dimen/_18ssp"
+        android:textColor="@color/homeCardViewIconColorDark"/>
+
+</com.google.android.material.card.MaterialCardView>

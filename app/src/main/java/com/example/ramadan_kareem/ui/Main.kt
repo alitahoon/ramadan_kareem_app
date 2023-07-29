@@ -8,8 +8,9 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
 import com.example.ramadan_kareem.R
 import com.example.ramadan_kareem.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class Main : AppCompatActivity() {
     private val TAG:String?="Main"
     private lateinit var binding:ActivityMainBinding

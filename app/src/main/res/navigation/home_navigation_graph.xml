@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_Home_to_Favourite"
             app:destination="@id/Favourite" />
+        <action
+            android:id="@+id/action_Home_to_hadith"
+            app:destination="@id/hadith" />
     </fragment>
     <fragment
         android:id="@+id/tasbeeh"
@@ -70,4 +73,9 @@
         android:name="com.example.ramadan_kareem.ui.Calender"
         android:label="fragment_calender"
         tools:layout="@layout/fragment_calender" />
+    <fragment
+        android:id="@+id/hadith"
+        android:name="com.example.ramadan_kareem.ui.Hadith"
+        android:label="fragment_hadith"
+        tools:layout="@layout/fragment_hadith" />
 </navigation>

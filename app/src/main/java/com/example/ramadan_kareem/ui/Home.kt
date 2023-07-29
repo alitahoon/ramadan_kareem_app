@@ -5,14 +5,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import com.example.ramadan_kareem.R
+import com.example.ramadan_kareem.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class Home : Fragment() {
+
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var mNavController: NavController
+
+    companion object {
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        mNavController = findNavController()
     }
 
     override fun onCreateView(
@@ -20,10 +32,18 @@ class Home : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        binding.hadithCard.setOnClickListener {
+            val action = HomeDirections.actionHomeToHadith()
+            mNavController.navigate(action)
+        }
+
+        return binding.root
     }
 
-    companion object {
-
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

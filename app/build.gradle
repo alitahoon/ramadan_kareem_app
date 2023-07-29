@@ -41,6 +41,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 // Allow references to generated code
@@ -108,6 +112,11 @@ dependencies {
     testImplementation ("androidx.lifecycle:lifecycle-runtime-testing:$lifecycle_version")
 
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.2.0'
+
+    //sdp
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+    //ssp
+    implementation 'com.intuit.ssp:ssp-android:1.1.0'
 
     implementation project(path: ':data')
     implementation project(path: ':domain')

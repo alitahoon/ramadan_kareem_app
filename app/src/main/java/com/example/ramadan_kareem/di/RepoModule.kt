@@ -14,12 +14,8 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object RepoModule {
     @Provides
-    fun ProvideRepo(
-        apiService: ApiService,
-    ): UserRepo {
-        return userRepoImpl(
-            apiService
-        )
+    fun ProvideRepo(apiService: ApiService, ): UserRepo {
+        return userRepoImpl(apiService)
     }
 
 }

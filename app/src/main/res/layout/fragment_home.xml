@@ -307,7 +307,7 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/hadeeth_card"
+        android:id="@+id/hadith_card"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="10dp"
