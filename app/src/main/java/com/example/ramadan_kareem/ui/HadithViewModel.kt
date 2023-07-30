@@ -3,6 +3,7 @@ package com.example.ramadan_kareem.ui
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.domain.entity.Resource
 import com.example.domain.entity.hadith.HadithResponse
 import com.example.domain.usecase.GetHadith
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,13 +20,15 @@ class HadithViewModel @Inject constructor(
 
     private val TAG = "HadithViewModel"
 
-    private val _hadith:MutableStateFlow<HadithResponse?> = MutableStateFlow(null)
-    val hadith:StateFlow<HadithResponse?> = _hadith
+    private val _hadith:MutableStateFlow<Resource<HadithResponse>?> = MutableStateFlow(null)
+    val hadith:StateFlow<Resource<HadithResponse>?> = _hadith
 
     fun getHadith(){
         viewModelScope.launch {
-            _hadith.value = getHadithUseCase()
-            Log.d(TAG,"getHadith")
+            getHadithUseCase{
+                _hadith.value=it
+            }
+                Log.d(TAG,"getHadith")
         }
     }
 

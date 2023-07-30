@@ -51,11 +51,11 @@ class Hadith : Fragment() {
 
         lifecycleScope.launch {
             viewModel.hadith.collect{
-                data = it?.hadiths?.data!!
-                Toast.makeText(context, ""+data, Toast.LENGTH_SHORT).show()
-                val adapter = HadithAdapter(requireContext(),data)
-                binding.rvHadith.adapter = adapter
-                binding.rvHadith.setHasFixedSize(true)
+//                data = it?.hadiths?.data!!
+//                Toast.makeText(context, ""+data, Toast.LENGTH_SHORT).show()
+//                val adapter = HadithAdapter(requireContext(),data)
+//                binding.rvHadith.adapter = adapter
+//                binding.rvHadith.setHasFixedSize(true)
             }
         }
 
