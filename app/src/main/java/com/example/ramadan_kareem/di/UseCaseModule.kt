@@ -14,7 +14,7 @@ import dagger.hilt.components.SingletonComponent
 object UseCaseModule {
 
     @Provides
-    fun provideUseCase(userRepo: UserRepo):GetHadith{
+    fun provideGetHadithFromRemote(userRepo: UserRepo):GetHadith{
         return GetHadith(userRepo)
     }
 

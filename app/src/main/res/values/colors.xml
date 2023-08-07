@@ -49,7 +49,7 @@
     <color name="homeCardViewIconColorDark">#59A87D</color>
     <color name="homeMenuIconColor">#AFADAD</color>
     <color name="icon_yello">#E7B10A</color>
-
+    <color name="readMore">#36FA8F</color>
 
 
 </resources>

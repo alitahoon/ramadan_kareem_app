@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.entity.hadith.Data
 import com.example.ramadan_kareem.R
+import kr.co.prnd.readmore.ReadMoreTextView
 
 class HadithAdapter(val context:Context,val listHadith: ArrayList<Data>): RecyclerView.Adapter<HadithAdapter.HadithViewHolder>() {
 
@@ -23,14 +24,17 @@ class HadithAdapter(val context:Context,val listHadith: ArrayList<Data>): Recycl
 
     override fun onBindViewHolder(holder: HadithViewHolder, position: Int) {
         val hadith = listHadith[position]
-        holder.bind(hadith.hadithArabic)
+        val bookName = hadith.chapter.chapterArabic
+        holder.bind(hadith.hadithArabic,bookName)
     }
 
     class HadithViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvHadith = itemView.findViewById<TextView>(R.id.tv_hadith)
+        val tvHadith = itemView.findViewById<ReadMoreTextView>(R.id.tv_hadith)
+        val bookName = itemView.findViewById<TextView>(R.id.hadith_book_name)
 
-        fun bind(hadith:String){
+        fun bind(hadith:String,name:String){
             tvHadith.text = hadith
+            bookName.text = name
         }
     }
 

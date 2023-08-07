@@ -27,7 +27,7 @@ class AlQuranViewModel @Inject constructor(
             getQuranFromRemote{
                 _quran.value=it
             }
-            Log.d(TAG,"getHadith")
+            Log.d(TAG,"getQuran")
         }
     }
 

@@ -2,7 +2,7 @@ package com.example.trainlivelocation.di
 
 import com.example.data.data.ApiHadithService
 import com.example.data.data.ApiQuranService
-import com.example.ramadan_kareem.util.constant.Companion.BASE_URL
+import com.example.ramadan_kareem.util.constant.Companion.BASE_URL_HADITH
 import com.example.ramadan_kareem.util.constant.Companion.BASE_URL_QURAAN
 import dagger.Module
 import dagger.Provides
@@ -12,6 +12,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -29,9 +30,10 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient):Retrofit{
+    @Named("Hadith")
+    fun provideRetrofitForHadith(okHttpClient: OkHttpClient):Retrofit{
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BASE_URL_HADITH)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -40,19 +42,26 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideApiServiceForHadith(retrofit: Retrofit): ApiHadithService {
+    fun provideApiServiceForHadith(@Named("Hadith")retrofit: Retrofit): ApiHadithService {
         return retrofit.create(ApiHadithService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideApiServiceForQuran(okHttpClient: OkHttpClient): ApiQuranService {
-        val retrofitQuran=retrofit2.Retrofit.Builder()
-        .baseUrl(BASE_URL_QURAAN)
+    @Named("Quran")
+    fun provideRetrofitForQuran(okHttpClient: OkHttpClient):Retrofit{
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL_QURAAN)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        return retrofitQuran.create(ApiQuranService::class.java)
+
+    }
+
+    @Provides
+    @Singleton
+    fun provideApiServiceForQuran(@Named("Quran") retrofit: Retrofit): ApiQuranService {
+        return retrofit.create(ApiQuranService::class.java)
     }
 
 }
