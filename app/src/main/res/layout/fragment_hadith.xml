@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/homeBackgroundColorDark"
-    tools:context=".ui.Hadith">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_hadith"
-        android:layout_margin="@dimen/_16sdp"
+    <data>
+        <variable
+            name="viewmoedl"
+            type="com.example.ramadan_kareem.ui.HadithViewModel" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_hadith"/>
+        android:background="@color/homeBackgroundColorDark"
+        tools:context=".ui.Hadith">
 
-</FrameLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_hadith"
+            android:layout_margin="@dimen/_16sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_hadith" />
+
+    </FrameLayout>
+</layout>

@@ -1,14 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.AlQuran">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.ramadan_kareem.ui.AlQuranViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".ui.AlQuran"
+        android:background="@drawable/home_background">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:text="القران الكريم"
+            android:textColor="@color/white"
+            android:drawableEnd="@drawable/moshf"
+            android:drawablePadding="@dimen/_5sdp"
+            android:gravity="center|start"
+            android:textSize="@dimen/_24ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:backgroundTint="@color/homeCardViewIconColorDark"
+            app:cardCornerRadius="@dimen/_15sdp"
+            app:cardElevation="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/card_background"
+                android:padding="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:gravity="center|start"
+                    android:text="الاخيره"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
+                    app:drawableEndCompat="@drawable/read"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
+                    android:src="@drawable/read_quran"
+                    android:tintMode="src_over"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:fontFamily="@font/hafs"
+                    android:gravity="center|start"
+                    android:text="الفاتحة"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_36ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                <TextView
+                    android:id="@+id/quran_txt_last_aya"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|start"
+                    android:text="رقم الايه :"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:visibility="gone"
+            android:id="@+id/textInputLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintBottom_toTopOf="@+id/txt_surah_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:boxCornerRadiusBottomEnd="@dimen/_15sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_15sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_15sdp"
+            app:boxCornerRadiusTopStart="@dimen/_15sdp"
+            android:layout_marginHorizontal="@dimen/_50sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView3"
+            android:layout_marginVertical="@dimen/_10sdp">
+
+            <EditText
+                android:textSize="@dimen/_14ssp"
+                android:backgroundTint="#6A19775B"
+                android:drawablePadding="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableEnd="@drawable/search"
+                android:gravity="bottom|start"
+                android:hint="ابحث عن سوره"
+                android:textColorHint="@color/homeBackgroundColorDark" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/txt_surah_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_15sdp"
+            android:drawableEnd="@drawable/surah"
+            android:drawablePadding="@dimen/_5sdp"
+            android:gravity="center|start"
+            android:text="السور"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView3" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/alQuranRcvQuran"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/txt_surah_title"
+            tools:listitem="@layout/quran_surah_rcv_item_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -24,7 +24,7 @@ class Hadith : Fragment() {
     private val binding get() = _binding!!
     private lateinit var mNavController: NavController
     private lateinit var data: ArrayList<Data>
-    private val viewModel:HadithViewModel by viewModels()
+    private val hadithViewModel:HadithViewModel by viewModels()
 
     companion object {
 
@@ -42,15 +42,19 @@ class Hadith : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentHadithBinding.inflate(inflater, container, false)
+            .apply {
+                this.viewmoedl=hadithViewModel
+            }
+
 
 //        data.add("فَيَفْصِمُ عَنْهُ وَإِنَّ جَبِينَهُ لَيَتَفَصَّدُ عَرَقًا")
 
-        viewModel.getHadith()
+        hadithViewModel.getHadith()
 
         binding.rvHadith.layoutManager = LinearLayoutManager(context)
 
         lifecycleScope.launch {
-            viewModel.hadith.collect{
+            hadithViewModel.hadith.collect{
 //                data = it?.hadiths?.data!!
 //                Toast.makeText(context, ""+data, Toast.LENGTH_SHORT).show()
 //                val adapter = HadithAdapter(requireContext(),data)

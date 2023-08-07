@@ -38,6 +38,10 @@ class Home : Fragment() {
             val action = HomeDirections.actionHomeToHadith()
             mNavController.navigate(action)
         }
+        binding.quran.setOnClickListener{
+            val action = HomeDirections.actionHomeToAlQuran()
+            mNavController.navigate(action)
+        }
 
         return binding.root
     }

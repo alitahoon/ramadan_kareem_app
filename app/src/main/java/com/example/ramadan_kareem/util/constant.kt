@@ -5,5 +5,6 @@ class constant {
     companion object{
         val BASE_URL="https://hadithapi.com/public/api/"
         //type
+        val BASE_URL_QURAAN="http://api.alquran.cloud/v1/"
     }
 }

@@ -1,7 +1,8 @@
 package com.example.trainlivelocation.di
 
 import com.example.data.*
-import com.example.data.data.ApiService
+import com.example.data.data.ApiHadithService
+import com.example.data.data.ApiQuranService
 import com.example.data.repo.userRepoImpl
 import com.example.domain.repo.UserRepo
 import dagger.Module
@@ -14,8 +15,8 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object RepoModule {
     @Provides
-    fun ProvideRepo(apiService: ApiService, ): UserRepo {
-        return userRepoImpl(apiService)
+    fun ProvideRepo(apiHadithService: ApiHadithService,apiQuranService: ApiQuranService ): UserRepo {
+        return userRepoImpl(apiHadithService,apiQuranService)
     }
 
 }

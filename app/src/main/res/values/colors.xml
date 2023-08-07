@@ -40,7 +40,7 @@
 <!--    <color name="sencondGreenA700">#00bfa5</color>-->
 
 
-    <color name="homebackgroundFirst">#0B4836</color>
+    <color name="homebackgroundFirst">#19775B</color>
     <color name="homebackgroundSecond">#05291F</color>
 
 
@@ -48,6 +48,7 @@
     <color name="homeCardViewBackgroundDark">#052732</color>
     <color name="homeCardViewIconColorDark">#59A87D</color>
     <color name="homeMenuIconColor">#AFADAD</color>
+    <color name="icon_yello">#E7B10A</color>
 
 
 
