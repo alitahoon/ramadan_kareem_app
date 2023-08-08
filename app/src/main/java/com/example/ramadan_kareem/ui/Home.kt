@@ -42,6 +42,11 @@ class Home : Fragment() {
             val action = HomeDirections.actionHomeToAlQuran()
             mNavController.navigate(action)
         }
+        binding.azkarCard.setOnClickListener {
+            val action = HomeDirections.actionHomeToAzkar()
+            mNavController.navigate(action)
+        }
+
 
         return binding.root
     }

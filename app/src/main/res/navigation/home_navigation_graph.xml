@@ -47,6 +47,9 @@
         <action
             android:id="@+id/action_Home_to_hadith"
             app:destination="@id/hadith" />
+        <action
+            android:id="@+id/action_Home_to_azkar"
+            app:destination="@id/azkar" />
     </fragment>
     <fragment
         android:id="@+id/tasbeeh"
@@ -77,5 +80,18 @@
         android:id="@+id/hadith"
         android:name="com.example.ramadan_kareem.ui.Hadith"
         android:label="fragment_hadith"
-        tools:layout="@layout/fragment_hadith" />
+        tools:layout="@layout/fragment_hadith" >
+        <action
+            android:id="@+id/action_hadith_to_Home"
+            app:destination="@id/Home" />
+    </fragment>
+    <fragment
+        android:id="@+id/azkar"
+        android:name="com.example.ramadan_kareem.ui.Azkar"
+        android:label="fragment_azkar"
+        tools:layout="@layout/fragment_azkar" >
+        <action
+            android:id="@+id/action_azkar_to_Home"
+            app:destination="@id/Home" />
+    </fragment>
 </navigation>

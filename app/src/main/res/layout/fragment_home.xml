@@ -314,7 +314,7 @@
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/homeCardViewBackgroundDark"
         app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/duaa_card"
+        app:layout_constraintEnd_toStartOf="@+id/azkar_card"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/qibla_card"
         app:strokeColor="@color/homeCardViewIconColorDark"
@@ -350,7 +350,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/duaa_card"
+        android:id="@+id/azkar_card"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="10dp"
@@ -386,7 +386,7 @@
                 android:layout_alignParentBottom="true"
                 android:fontFamily="@font/readex_pro_medium"
                 android:gravity="center"
-                android:text="الادعيه"
+                android:text="الأذكار"
                 android:textColor="@color/homeCardViewIconColorDark"
                 android:textSize="12sp" />
         </RelativeLayout>
@@ -401,7 +401,7 @@
         android:backgroundTint="@color/homeCardViewBackgroundDark"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/duaa_card"
+        app:layout_constraintStart_toEndOf="@+id/azkar_card"
         app:layout_constraintTop_toBottomOf="@id/quran_card"
         app:strokeColor="@color/homeCardViewIconColorDark"
         app:strokeWidth="1dp">

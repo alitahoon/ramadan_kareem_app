@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/homeBackgroundColorDark"
-    tools:context=".ui.Hadith">
+    tools:context=".ui.Azkar">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_8sdp"
@@ -17,10 +17,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/quran"
+            android:src="@drawable/duaa"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,16 +29,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/_6sdp"
-            android:text="الأحاديث"
+            android:text="الأذكار"
             android:textColor="@color/homeCardViewIconColorDark"
             android:textSize="@dimen/_18ssp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView4"
+            app:layout_constraintEnd_toStartOf="@+id/imageView3"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/go_back_fromHadith"
+            android:id="@+id/go_back_fromAzkar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/go_back"
@@ -46,19 +46,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_hadith"
+        android:id="@+id/rv_azkar_category"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/_8sdp"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-        tools:listitem="@layout/item_hadith" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        tools:listitem="@layout/item_azkar_category" />
 
     <ProgressBar
-        android:id="@+id/hadith_progressBar"
+        android:id="@+id/azkar_category_progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
