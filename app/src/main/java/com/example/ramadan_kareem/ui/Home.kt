@@ -46,6 +46,10 @@ class Home : Fragment() {
             val action = HomeDirections.actionHomeToAzkar()
             mNavController.navigate(action)
         }
+        binding.qiblaCard.setOnClickListener {
+            val action = HomeDirections.actionHomeToQibla()
+            mNavController.navigate(action)
+        }
 
 
         return binding.root

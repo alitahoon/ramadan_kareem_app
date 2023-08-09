@@ -1,27 +1,29 @@
 package com.example.ramadan_kareem.ui
 
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.example.ramadan_kareem.databinding.FragmentQiblaBinding
+import com.example.domain.entity.azkar.AzkarRespons
+import com.example.ramadan_kareem.databinding.FragmentDisplayAzkarBinding
 
-class Qibla : Fragment(){
+class DisplayAzkar : Fragment() {
 
-    private var _binding: FragmentQiblaBinding? = null
+    private var _binding: FragmentDisplayAzkarBinding? = null
     private val binding get() = _binding!!
     private lateinit var mNavController: NavController
+    private lateinit var data: List<AzkarRespons>
+    private val displayAzkarViewModel:AzkarViewModel by viewModels()
+    private val TAG="DisplayAzkar"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mNavController = findNavController()
+        data = ArrayList()
     }
 
     override fun onCreateView(
@@ -29,22 +31,16 @@ class Qibla : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentQiblaBinding.inflate(inflater, container, false)
+        _binding = FragmentDisplayAzkarBinding.inflate(inflater, container, false)
 
 
 
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-
-    }
-
-    companion object {
-
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

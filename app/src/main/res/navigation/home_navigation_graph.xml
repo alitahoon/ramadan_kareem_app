@@ -93,5 +93,17 @@
         <action
             android:id="@+id/action_azkar_to_Home"
             app:destination="@id/Home" />
+        <action
+            android:id="@+id/action_azkar_to_displayAzkar"
+            app:destination="@id/displayAzkar" />
+    </fragment>
+    <fragment
+        android:id="@+id/displayAzkar"
+        android:name="com.example.ramadan_kareem.ui.DisplayAzkar"
+        android:label="fragment_display_azkar"
+        tools:layout="@layout/fragment_display_azkar" >
+        <action
+            android:id="@+id/action_displayAzkar_to_azkar"
+            app:destination="@id/azkar" />
     </fragment>
 </navigation>

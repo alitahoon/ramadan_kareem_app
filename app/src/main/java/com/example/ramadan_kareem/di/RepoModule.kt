@@ -18,7 +18,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object RepoModule {
     @Provides
-    fun ProvideRepo(apiHadithService: ApiHadithService,apiQuranService: ApiQuranService,context: Application ): UserRepo {
+    fun ProvideRepo(apiHadithService: ApiHadithService,apiQuranService: ApiQuranService,@ApplicationContext context: Context ): UserRepo {
         return userRepoImpl(apiHadithService,apiQuranService,context)
     }
 
