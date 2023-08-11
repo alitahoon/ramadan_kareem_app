@@ -1,7 +1,9 @@
 package com.example.ramadan_kareem.ui
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
@@ -21,6 +23,9 @@ class Main : AppCompatActivity() {
         setContentView(binding.root)
         hideActionBar()
         setBottomBarIcons()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        }
         binding.bottomNavigationBar.setTabSelectedListener(object :
             BottomNavigationBar.OnTabSelectedListener {
             override fun onTabSelected(position: Int) {
@@ -50,7 +55,7 @@ class Main : AppCompatActivity() {
         binding.bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
         binding.bottomNavigationBar
             .addItem(BottomNavigationItem(R.drawable.home, "الرئيسيه")).setActiveColor(R.color.homeCardViewIconColorDark)
-            .addItem(BottomNavigationItem(R.drawable.search, "البحث")).setActiveColor(R.color.homeCardViewIconColorDark)
+            .addItem(BottomNavigationItem(R.drawable.baseline_search_24, "البحث")).setActiveColor(R.color.homeCardViewIconColorDark)
             .addItem(BottomNavigationItem(R.drawable.favourite, "المفضله")).setActiveColor(R.color.homeCardViewIconColorDark)
             .addItem(BottomNavigationItem(R.drawable.calender, "التقويم")).setActiveColor(R.color.homeCardViewIconColorDark)
             .setFirstSelectedPosition(0)

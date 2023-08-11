@@ -1,7 +1,9 @@
 package com.example.ramadan_kareem.ui
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -22,6 +24,9 @@ class splash : AppCompatActivity() {
             .apply {
                 this.viewmodel=splashViewModel
             }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        }
         setContentView(binding.root)
         setObservers()
     }

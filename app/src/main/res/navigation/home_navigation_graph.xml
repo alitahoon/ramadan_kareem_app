@@ -25,7 +25,11 @@
             app:destination="@id/Search" />
         <action
             android:id="@+id/action_home_to_alQuran"
-            app:destination="@id/alQuran" />
+            app:destination="@id/alQuran"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
         <action
             android:id="@+id/action_home_to_favourite2"
             app:destination="@+id/favourite" />
@@ -40,16 +44,28 @@
             app:destination="@id/tasbeeh" />
         <action
             android:id="@+id/action_home_to_qibla"
-            app:destination="@id/Qibla" />
+            app:destination="@id/Qibla"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
         <action
             android:id="@+id/action_Home_to_Favourite"
             app:destination="@id/Favourite" />
         <action
             android:id="@+id/action_Home_to_hadith"
-            app:destination="@id/hadith" />
+            app:destination="@id/hadith"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
         <action
             android:id="@+id/action_Home_to_azkar"
-            app:destination="@id/azkar" />
+            app:destination="@id/azkar"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/exit" />
     </fragment>
     <fragment
         android:id="@+id/tasbeeh"
@@ -104,6 +120,10 @@
         tools:layout="@layout/fragment_display_azkar" >
         <action
             android:id="@+id/action_displayAzkar_to_azkar"
-            app:destination="@id/azkar" />
+            app:destination="@id/azkar"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
     </fragment>
 </navigation>

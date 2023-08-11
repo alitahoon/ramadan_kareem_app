@@ -66,6 +66,8 @@ class AlQuran : Fragment() ,SurahItemListener{
     }
 
     override fun onSurahClicked(surah: Surah) {
-
+        var dialog = SurahViewer(surah)
+        var childFragmentManager = getChildFragmentManager()
+        dialog.show(childFragmentManager, "SurahViewer")
     }
 }
