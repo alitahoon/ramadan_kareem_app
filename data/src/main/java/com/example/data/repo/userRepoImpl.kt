@@ -1,13 +1,14 @@
 package com.example.data.repo
 
+import Resource
 import android.content.Context
 import android.util.Log
 import com.example.data.data.ApiHadithService
 import com.example.data.data.ApiQuranService
-import com.example.domain.entity.QuranResponse
-import com.example.domain.entity.Resource
+import com.example.data.data.AssestClass
 import com.example.domain.entity.azkar.AzkarRespons
 import com.example.domain.entity.hadith.HadithResponse
+import com.example.domain.entity.quran.QuranResponse
 import com.example.domain.repo.UserRepo
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -17,6 +18,7 @@ import java.nio.charset.StandardCharsets
 class userRepoImpl(
     private val apiHadithService: ApiHadithService,
     private val apiQuranService: ApiQuranService,
+    private val assestClass: AssestClass,
     private val context:Context
 ) : UserRepo {
     private val TAG = "userRepoImpl"
@@ -38,19 +40,7 @@ class userRepoImpl(
     }
 
     override suspend fun getQuranFromRemote(result: (Resource<QuranResponse>) -> Unit) {
-        val response = apiQuranService.getQuran()
-        if (response.isSuccessful) {
-            if (response.body() != null) {
-                Log.d(TAG, "${response!!.body()!!.data}")
-                result.invoke(Resource.Success(response!!.body()!!))
-            } else {
-                Log.e(TAG, "data is null ")
-                result.invoke(Resource.Failure("failed to get quran data is null "))
-            }
-        } else {
-            Log.e(TAG, "failed to get quran ${response.body()}")
-            result.invoke(Resource.Failure("failed to get quran ${response.body()}"))
-        }
+        assestClass.loadDataFromJson(context,"quran.json",result)
 
     }
 

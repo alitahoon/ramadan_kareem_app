@@ -1,4 +1,4 @@
-package com.example.domain.entity
+package com.example.domain.entity.quran
 
 data class QuranResponse(
     val code: Int,

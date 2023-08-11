@@ -1,9 +1,9 @@
 package com.example.domain.repo
 
-import com.example.domain.entity.QuranResponse
-import com.example.domain.entity.Resource
+import Resource
 import com.example.domain.entity.azkar.AzkarRespons
 import com.example.domain.entity.hadith.HadithResponse
+import com.example.domain.entity.quran.QuranResponse
 
 interface UserRepo {
 

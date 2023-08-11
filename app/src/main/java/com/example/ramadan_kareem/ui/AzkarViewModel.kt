@@ -1,9 +1,9 @@
 package com.example.ramadan_kareem.ui
 
+import Resource
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.domain.entity.Resource
 import com.example.domain.entity.azkar.AzkarRespons
 import com.example.domain.usecase.GetAzkar
 import com.example.domain.usecase.GetAzkarCategory

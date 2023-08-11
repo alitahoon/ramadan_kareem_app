@@ -12,7 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.domain.entity.Resource
 import com.example.domain.entity.azkar.AzkarRespons
 import com.example.ramadan_kareem.databinding.FragmentAzkarBinding
 import dagger.hilt.android.AndroidEntryPoint

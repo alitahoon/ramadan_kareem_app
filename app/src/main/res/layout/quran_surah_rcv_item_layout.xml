@@ -6,7 +6,7 @@
     <data>
         <variable
             name="surah"
-            type="com.example.domain.entity.Surah" />
+            type="com.example.domain.entity.quran.Surah" />
         <variable
             name="listener"
             type="com.example.ramadan_kareem.util.SurahItemListener" />
@@ -38,7 +38,7 @@
                 android:id="@+id/surah_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{surah.number}"
+                android:text='@{surah.number + " "}'
                 android:textColor="@color/white"
                 android:textSize="@dimen/_10ssp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
