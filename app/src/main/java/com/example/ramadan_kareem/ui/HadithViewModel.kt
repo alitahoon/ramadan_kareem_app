@@ -1,9 +1,9 @@
 package com.example.ramadan_kareem.ui
 
+import Resource
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.domain.entity.Resource
 import com.example.domain.entity.hadith.HadithResponse
 import com.example.domain.usecase.GetHadith
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,7 +1,7 @@
 package com.example.domain.usecase
 
-import com.example.domain.entity.QuranResponse
-import com.example.domain.entity.Resource
+import Resource
+import com.example.domain.entity.quran.QuranResponse
 import com.example.domain.repo.UserRepo
 
 class GetQuranFromRemote (private val userRepo: UserRepo){

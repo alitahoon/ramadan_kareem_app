@@ -1,10 +1,10 @@
 package com.example.ramadan_kareem.ui
 
+import Resource
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.domain.entity.QuranResponse
-import com.example.domain.entity.Resource
+import com.example.domain.entity.quran.QuranResponse
 import com.example.domain.usecase.GetQuranFromRemote
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

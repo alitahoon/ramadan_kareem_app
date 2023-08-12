@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.domain.entity.Surah
-import com.example.domain.entity.Resource
+import com.example.domain.entity.quran.Surah
 import com.example.ramadan_kareem.databinding.FragmentAlQuranBinding
 import com.example.ramadan_kareem.util.QuranCustomAdapter
 import com.example.ramadan_kareem.util.SurahItemListener
@@ -41,7 +40,7 @@ class AlQuran : Fragment() ,SurahItemListener{
     }
 
     private fun setObservers() {
-        lifecycleScope.launch (Dispatchers.IO) {
+        lifecycleScope.launch (Dispatchers.Main) {
             alQuranViewModel.quran.collect{
                 when(it){
                     is Resource.Success->{
@@ -67,6 +66,8 @@ class AlQuran : Fragment() ,SurahItemListener{
     }
 
     override fun onSurahClicked(surah: Surah) {
-
+        var dialog = SurahViewer(surah)
+        var childFragmentManager = getChildFragmentManager()
+        dialog.show(childFragmentManager, "SurahViewer")
     }
 }

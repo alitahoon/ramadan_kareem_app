@@ -1,4 +1,3 @@
-package com.example.domain.entity
 
 sealed class Resource<out T> {
     object Loading : Resource<Nothing>()

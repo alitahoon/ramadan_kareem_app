@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.entity.Surah
+import com.example.domain.entity.quran.Surah
 import com.example.ramadan_kareem.databinding.QuranSurahRcvItemLayoutBinding
 
 class QuranCustomAdapter(val context: Context, val quransurahList:List<Surah>, val surahItemListener: SurahItemListener) :
