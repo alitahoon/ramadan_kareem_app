@@ -60,7 +60,11 @@
         android:id="@+id/Qibla"
         android:name="com.example.ramadan_kareem.ui.Qibla"
         android:label="fragment_qibla"
-        tools:layout="@layout/fragment_qibla" />
+        tools:layout="@layout/fragment_qibla" >
+        <action
+            android:id="@+id/action_Qibla_to_Home2"
+            app:destination="@id/Home" />
+    </fragment>
     <fragment
         android:id="@+id/Search"
         android:name="com.example.ramadan_kareem.ui.Search"

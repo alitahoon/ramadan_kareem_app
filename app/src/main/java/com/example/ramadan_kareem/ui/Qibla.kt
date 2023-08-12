@@ -31,6 +31,10 @@ class Qibla : Fragment(){
         // Inflate the layout for this fragment
         _binding = FragmentQiblaBinding.inflate(inflater, container, false)
 
+        binding.goBackFromQibla.setOnClickListener {
+            val action = QiblaDirections.actionQiblaToHome2()
+            mNavController.navigate(action)
+        }
 
 
         return binding.root
