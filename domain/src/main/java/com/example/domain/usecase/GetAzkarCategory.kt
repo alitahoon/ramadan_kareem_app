@@ -6,6 +6,6 @@ import com.example.domain.repo.UserRepo
 
 class GetAzkarCategory(private val userRepo: UserRepo) {
 
-    suspend operator fun invoke(result: (Resource<List<AzkarRespons>>) -> Unit) = userRepo.getAzkarCategoryFromLocal(result)
+    suspend operator fun invoke(result: (Resource<List<AzkarRespons>>) -> Unit) = userRepo.getAzkarFromLocal(result)
 
 }

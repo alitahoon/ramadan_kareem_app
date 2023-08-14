@@ -59,8 +59,9 @@ class userRepoImpl(
         return gson.fromJson(azkarString, object : TypeToken<List<AzkarRespons>>() {}.type)
     }
 
-    override suspend fun getAzkarCategoryFromLocal(result: (Resource<List<AzkarRespons>>) -> Unit) {
-        val response = getAllAzkar().distinctBy { it.category }
+    override suspend fun getAzkarFromLocal(result: (Resource<List<AzkarRespons>>) -> Unit) {
+
+        val response = getAllAzkar()
         if (response != null){
             result.invoke(Resource.Success(response))
         }else{
@@ -68,12 +69,12 @@ class userRepoImpl(
         }
     }
 
-    override suspend fun getAzkarFromLocal(result: (Resource<List<AzkarRespons>>) -> Unit, category:String) {
-        val response = getAllAzkar().filter {category == it.category }
-        if (response != null){
-            result.invoke(Resource.Success(response))
-        }else{
-            result.invoke(Resource.Failure("failed to get Azkar"))
-        }
-    }
+//    override suspend fun getAzkarFromLocal(result: (Resource<List<AzkarRespons>>) -> Unit, category:String) {
+//        val response = getAllAzkar().filter {category == it.category }
+//        if (response != null){
+//            result.invoke(Resource.Success(response))
+//        }else{
+//            result.invoke(Resource.Failure("failed to get Azkar"))
+//        }
+//    }
 }

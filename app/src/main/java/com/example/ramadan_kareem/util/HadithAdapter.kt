@@ -1,4 +1,4 @@
-package com.example.ramadan_kareem.ui
+package com.example.ramadan_kareem.util
 
 import android.content.Context
 import android.view.LayoutInflater

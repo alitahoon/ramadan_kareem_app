@@ -9,7 +9,6 @@ interface UserRepo {
 
     suspend fun getHadithFromRemote(result: (Resource<HadithResponse>) -> Unit)
     suspend fun getQuranFromRemote(result: (Resource<QuranResponse>) -> Unit)
-    suspend fun getAzkarCategoryFromLocal(result: (Resource<List<AzkarRespons>>) -> Unit)
-    suspend fun getAzkarFromLocal(result: (Resource<List<AzkarRespons>>) -> Unit, category:String)
+    suspend fun getAzkarFromLocal(result: (Resource<List<AzkarRespons>>) -> Unit)
 
 }

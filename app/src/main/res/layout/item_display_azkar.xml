@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/_12sdp"
@@ -24,13 +25,44 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:background="#AA59A87D"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_count"
+            app:layout_constraintStart_toEndOf="@+id/tv_count"
+            app:layout_constraintTop_toTopOf="@+id/tv_count"
+            app:layout_constraintWidth_percent="0.15" />
+
+        <TextView
+            android:id="@+id/tv_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_zekr"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_zekr" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:background="#AA59A87D"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_count"
+            app:layout_constraintEnd_toStartOf="@+id/tv_count"
+            app:layout_constraintTop_toTopOf="@+id/tv_count"
+            app:layout_constraintWidth_percent="0.15" />
+
         <TextView
             android:id="@+id/tv_zekr_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_12sdp"
-            android:text="من قالها حين يصبح وحين يمسى كفته من كل شىء (الإخلاص والمعوذتين). (3)"
-            android:textColor="@color/homeCardViewIconColorDark"
+            android:padding="@dimen/_10sdp"
+            android:text="من قالها حين يصبح وحين يمسى كفته من كل شىء (الإخلاص والمعوذتين)."
+            android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_zekr" />

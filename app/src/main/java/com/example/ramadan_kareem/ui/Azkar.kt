@@ -14,6 +14,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domain.entity.azkar.AzkarRespons
 import com.example.ramadan_kareem.databinding.FragmentAzkarBinding
+import com.example.ramadan_kareem.util.AzkarCategoryAdapter
+import com.example.ramadan_kareem.util.AzkarItemListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,7 +28,7 @@ class Azkar : Fragment() {
     private val binding get() = _binding!!
     private lateinit var mNavController: NavController
     private lateinit var data: List<AzkarRespons>
-    private val azkarViewModel:AzkarViewModel by viewModels()
+    val azkarViewModel:AzkarViewModel by viewModels()
     private val TAG="AlAzkar"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +44,7 @@ class Azkar : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentAzkarBinding.inflate(inflater, container, false)
 
-        azkarViewModel.getAzkarCategory()
+        azkarViewModel.getAzkar()
         binding.rvAzkarCategory.layoutManager = LinearLayoutManager(context)
         setObservers()
 
@@ -56,16 +58,22 @@ class Azkar : Fragment() {
 
     private fun setObservers() {
         lifecycleScope.launch (Dispatchers.IO) {
-            azkarViewModel.azkarCategory.collect{
+            azkarViewModel.azkar.collect{
                 when(it){
                     is Resource.Loading->{
                         binding.azkarCategoryProgressBar.isVisible = true
                         Log.i(TAG,"getting azkar from json")
                     }
                     is Resource.Success->{
-                        data = it.data
+                        data = it.data.distinctBy { it.category }
                         withContext(Dispatchers.Main){
-                            val adapter = AzkarCategoryAdapter(requireContext(),data)
+                            val adapter = AzkarCategoryAdapter(requireContext(),data, object :AzkarItemListener{
+                                override fun onAzkarClicked(position: Int) {
+                                    val action = AzkarDirections.actionAzkarToDisplayAzkar(data[position].category,it.data.toTypedArray())
+                                    mNavController.navigate(action)
+                                }
+
+                            })
                             binding.rvAzkarCategory.adapter = adapter
                             binding.rvAzkarCategory.setHasFixedSize(true)
                         }
@@ -79,6 +87,7 @@ class Azkar : Fragment() {
                 }
             }
         }
+
     }
 
     override fun onDestroy() {

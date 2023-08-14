@@ -129,5 +129,11 @@
             app:exitAnim="@anim/exit"
             app:popEnterAnim="@anim/pop_enter"
             app:popExitAnim="@anim/pop_exit" />
+        <argument
+            android:name="category"
+            app:argType="string" />
+        <argument
+            android:name="azkar"
+            app:argType="com.example.domain.entity.azkar.AzkarRespons[]" />
     </fragment>
 </navigation>

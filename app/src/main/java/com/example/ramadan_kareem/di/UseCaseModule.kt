@@ -1,7 +1,6 @@
 package com.example.ramadan_kareem.di
 
 import com.example.domain.repo.UserRepo
-import com.example.domain.usecase.GetAzkar
 import com.example.domain.usecase.GetAzkarCategory
 import com.example.domain.usecase.GetHadith
 import com.example.domain.usecase.GetQuranFromRemote
@@ -26,13 +25,8 @@ object UseCaseModule {
     }
 
     @Provides
-    fun provideGetAzkarCategory(userRepo: UserRepo):GetAzkarCategory{
+    fun provideGetAzkar(userRepo: UserRepo):GetAzkarCategory{
         return GetAzkarCategory(userRepo)
-    }
-
-    @Provides
-    fun provideGetAzkar(userRepo: UserRepo):GetAzkar{
-        return GetAzkar(userRepo)
     }
 
 }
