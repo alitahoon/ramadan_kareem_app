@@ -18,6 +18,7 @@
 
             <kr.co.prnd.readmore.ReadMoreTextView
                 android:id="@+id/tv_hadith"
+                android:fontFamily="@font/hafs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى، فَمَنْ كَانَتْ هِجْرَتُهُ إِلَى دُنْيَا يُصِيبُهَا أَوْ إِلَى امْرَأَةٍ يَنْكِحُهَا فَهِجْرَتُهُ إِلَى مَا هَاجَرَ إِلَيْهِ"
@@ -29,6 +30,7 @@
                 app:readMoreColor="@color/readMore"/>
 
             <TextView
+                android:fontFamily="@font/hafs"
                 android:id="@+id/hadith_book_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

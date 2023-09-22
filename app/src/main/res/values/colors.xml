@@ -46,6 +46,9 @@
 
     <color name="homeBackgroundColorDark">#001D26</color>
     <color name="homeCardViewBackgroundDark">#052732</color>
+    <color name="homeCardViewBackgroundDarkInverse1">#09495e</color>
+    <color name="homeCardViewBackgroundDarkInverse2">#2a515d</color>
+    <color name="homeCardViewBackgroundDarkInverseIcon">#3B9FBD</color>
     <color name="homeCardViewIconColorDark">#59A87D</color>
     <color name="homeMenuIconColor">#AFADAD</color>
     <color name="icon_yello">#E7B10A</color>

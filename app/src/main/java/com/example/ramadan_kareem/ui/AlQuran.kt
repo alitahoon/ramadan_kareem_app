@@ -22,7 +22,6 @@ class AlQuran : Fragment() ,SurahItemListener{
     private val TAG="AlQuran"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        alQuranViewModel.getQuran()
     }
 
     override fun onCreateView(
@@ -34,25 +33,40 @@ class AlQuran : Fragment() ,SurahItemListener{
                this.viewmodel=alQuranViewModel
             }
 
-        setObservers()
 
         return binding!!.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        alQuranViewModel.getQuran()
+        setObservers()
+
+    }
+
     private fun setObservers() {
-        lifecycleScope.launch (Dispatchers.Main) {
+        lifecycleScope.launch (Dispatchers.IO) {
             alQuranViewModel.quran.collect{
                 when(it){
                     is Resource.Success->{
+
                         Log.i(TAG,"${it.data}")
-                        binding!!.alQuranRcvQuran.adapter=QuranCustomAdapter(requireContext(),it.data.data.surahs,this@AlQuran)
+                        lifecycleScope.launch(Dispatchers.Main){
+                            binding!!.alQuranRcvQuran.adapter=QuranCustomAdapter(requireContext(),it.data.data.surahs,this@AlQuran)
+                            binding!!.alQuranProhressbar.visibility=View.INVISIBLE
+                            binding!!.alQuranRcvQuran.visibility=View.VISIBLE
+                        }
 
                     }
                     is Resource.Failure->{
                         Log.e(TAG,"${it.error}")
+                        binding!!.alQuranRcvQuran.visibility=View.VISIBLE
+                        binding!!.alQuranProhressbar.visibility=View.INVISIBLE
                     }
                     is Resource.Loading->{
                         Log.i(TAG,"getting qran from api")
+                        binding!!.alQuranProhressbar.visibility=View.VISIBLE
+                        binding!!.alQuranRcvQuran.visibility=View.INVISIBLE
                     }
 
                     else -> {}
@@ -66,7 +80,7 @@ class AlQuran : Fragment() ,SurahItemListener{
     }
 
     override fun onSurahClicked(surah: Surah) {
-        var dialog = SurahViewer(surah)
+        var dialog = Surah_ayas_viewer(surah)
         var childFragmentManager = getChildFragmentManager()
         dialog.show(childFragmentManager, "SurahViewer")
     }

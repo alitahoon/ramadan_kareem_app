@@ -1,20 +1,26 @@
 package com.example.ramadan_kareem.ui
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.ramadan_kareem.R
 import com.example.ramadan_kareem.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.LocalTime
 
 @AndroidEntryPoint
 class Home : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
+    private val homeViewModel:HomeViewModel by activityViewModels()
     private val binding get() = _binding!!
     private lateinit var mNavController: NavController
 
@@ -27,6 +33,18 @@ class Home : Fragment() {
         mNavController = findNavController()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setCurrantTime() {
+        val currentTime = LocalTime.now()
+        val hours = currentTime.hour
+        val minutes = currentTime.minute
+        Toast.makeText(requireContext(),("Current time: $hours:$minutes"), Toast.LENGTH_SHORT).show()
+
+        _binding!!.homeCurrantTimeTxt.setText("${hours}:${minutes}")
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,8 +68,8 @@ class Home : Fragment() {
             val action = HomeDirections.actionHomeToQibla()
             mNavController.navigate(action)
         }
-
-
+        setCurrantTime()
+        homeViewModel.getAzan()
         return binding.root
     }
 

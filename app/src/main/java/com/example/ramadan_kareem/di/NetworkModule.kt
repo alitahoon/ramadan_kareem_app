@@ -1,7 +1,9 @@
 package com.example.trainlivelocation.di
 
+import com.example.data.data.ApiAzanService
 import com.example.data.data.ApiHadithService
 import com.example.data.data.ApiQuranService
+import com.example.ramadan_kareem.util.constant.Companion.BASE_URL_AZAN
 import com.example.ramadan_kareem.util.constant.Companion.BASE_URL_HADITH
 import com.example.ramadan_kareem.util.constant.Companion.BASE_URL_QURAAN
 import dagger.Module
@@ -62,6 +64,24 @@ object NetworkModule {
     @Singleton
     fun provideApiServiceForQuran(@Named("Quran") retrofit: Retrofit): ApiQuranService {
         return retrofit.create(ApiQuranService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    @Named("Azan")
+    fun provideRetrofitForAzan(okHttpClient: OkHttpClient):Retrofit{
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL_AZAN)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+    }
+
+    @Provides
+    @Singleton
+    fun provideApiServiceForAzan(@Named("Azan") retrofit: Retrofit): ApiAzanService {
+        return retrofit.create(ApiAzanService::class.java)
     }
 
 }

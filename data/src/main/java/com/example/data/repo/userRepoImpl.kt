@@ -2,10 +2,14 @@ package com.example.data.repo
 
 import Resource
 import android.content.Context
+import android.location.Location
 import android.util.Log
+import com.example.data.data.ApiAzanService
 import com.example.data.data.ApiHadithService
 import com.example.data.data.ApiQuranService
 import com.example.data.data.AssestClass
+import com.example.data.data.GetCurrantLocationJustOnce
+import com.example.domain.entity.azan.AzanResponse
 import com.example.domain.entity.azkar.AzkarRespons
 import com.example.domain.entity.hadith.HadithResponse
 import com.example.domain.entity.quran.QuranResponse
@@ -19,7 +23,9 @@ class userRepoImpl(
     private val apiHadithService: ApiHadithService,
     private val apiQuranService: ApiQuranService,
     private val assestClass: AssestClass,
-    private val context:Context
+    private val context:Context,
+    private val azanService: ApiAzanService,
+    private val getCurrantLocationJustOnce: GetCurrantLocationJustOnce
 ) : UserRepo {
     private val TAG = "userRepoImpl"
     override suspend fun getHadithFromRemote(result: (Resource<HadithResponse>) -> Unit) {
@@ -37,6 +43,31 @@ class userRepoImpl(
             result.invoke(Resource.Failure("failed to get hadieth ${response.body()}"))
         }
 
+    }
+
+    override suspend fun getAzanFromRemote(
+        month: Int,
+        year: Int,
+        location: com.google.android.gms.maps.model.LatLng,
+        result: (Resource<AzanResponse>) -> Unit
+    ) {
+        val response =azanService.getAzanTimes(year,month,location.latitude,location.longitude,2)
+        if (response.isSuccessful) {
+            if (response.body() != null) {
+                result.invoke(Resource.Success(response!!.body()!!))
+            } else {
+                Log.e(TAG, "data is null ")
+                result.invoke(Resource.Failure("failed to get azan -> data is null "))
+            }
+        } else {
+            Log.e(TAG, "failed to get azan ${response.body()}")
+            result.invoke(Resource.Failure("failed to get azan ${response.body()}"))
+        }
+
+    }
+
+    override suspend fun getUserCurrantLocationJustOnce(result: (Resource<Location>) -> Unit) {
+        getCurrantLocationJustOnce.startGettingLocation(result)
     }
 
     override suspend fun getQuranFromRemote(result: (Resource<QuranResponse>) -> Unit) {

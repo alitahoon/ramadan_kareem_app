@@ -53,6 +53,7 @@ kapt {
 }
 
 dependencies {
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
     def nav_version = "2.5.3"
     def lifecycle_version = "2.5.1"
     def arch_version = "2.1.0"
@@ -129,6 +130,7 @@ dependencies {
 
     implementation 'com.google.code.gson:gson:2.8.8'
 
+    implementation 'com.airbnb.android:lottie:6.1.0'
 
 
     implementation project(path: ':data')

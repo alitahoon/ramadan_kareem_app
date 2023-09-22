@@ -1,45 +1,72 @@
 package com.example.ramadan_kareem.util
 
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
-import android.text.style.ForegroundColorSpan
+import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import com.airbnb.lottie.Lottie
+import com.airbnb.lottie.LottieAnimationView
+import com.example.domain.entity.quran.Ayah
 import com.example.domain.entity.quran.Surah
 import com.example.ramadan_kareem.R
 
+private val TAG="bindingMethods"
+
 @BindingAdapter("setSurahAya")
-fun setSurahAya(textView: TextView, surah: Surah) {
-    val spannableBuilder = SpannableStringBuilder()
-
-    for (aya in surah.ayahs) {
-        val ayaText = aya.text
-        val ayaNumber = aya.numberInSurah.toString()
-
-        val formattedText = if (aya.sajda) {
-            "${ayaText} ${ayaNumber} (${aya.numberInSurah})"
-        } else {
-            "${ayaText} (${ayaNumber})"
+fun setSurahAya(textView: TextView,surah: Surah){
+    var surahAyaTXT:StringBuilder=java.lang.StringBuilder()
+    for (aya in surah.ayahs){
+        if (aya.sajda){
+            surahAyaTXT.append("${aya.text}  (${aya.numberInSurah}) ")
+        }else{
+            surahAyaTXT.append("${aya.text}  (${aya.numberInSurah}) ")
         }
-
-        val spannableString = SpannableString(formattedText)
-
-        // Apply color to the aya number part
-        val ayaNumberStart = formattedText.indexOf(ayaNumber) - 1
-        val ayaNumberEnd = ayaNumberStart + ayaNumber.length + 1
-        spannableString.setSpan(
-            ForegroundColorSpan(textView.context.resources.getColor(R.color.icon_yello)),
-            ayaNumberStart,
-            ayaNumberEnd,
-            0
-        )
-
-        // Append the formatted SpannableString to the builder
-        spannableBuilder.append(spannableString)
-
-        // Add a newline between ayahs
-        spannableBuilder.append("\n")
     }
+    textView.text=surahAyaTXT
+}
 
-    textView.text = spannableBuilder
+
+
+@BindingAdapter("setSurahAyaNumber")
+fun setSurahAyaNumber(textView: TextView,ayas:List<Ayah>){
+    try {
+        textView.setText("${ayas.size}"+ " ايات ")
+
+    }catch (e:Exception){
+        Log.e(TAG,"${e.stackTrace}")
+    }
+}
+
+@BindingAdapter("setAyaText")
+fun setAyaText(textView: TextView,ayas:Ayah){
+    try {
+        textView.setText(ayas.text + " ")
+
+    }catch (e:Exception){
+        Log.e(TAG,"${e.stackTrace}")
+    }
+}
+
+@BindingAdapter("setAyaNumber")
+fun setAyaNumber(textView: TextView,ayas:Ayah){
+    try {
+        textView.setText(ayas.numberInSurah.toString() + " ")
+
+    }catch (e:Exception){
+        Log.e(TAG,"${e.stackTrace}")
+    }
+}
+
+@BindingAdapter("addToFavourite")
+fun addToFavourite(lottieAnimationView: LottieAnimationView,i:Int){
+    lottieAnimationView.setOnClickListener{
+        lottieAnimationView.playAnimation()
+
+    }
+}
+
+@BindingAdapter("playAyahSound")
+fun addToFavourite(imageView: ImageView,i:Int){
+
+
 }

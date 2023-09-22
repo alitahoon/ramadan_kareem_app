@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <data>
+            <variable
+                name="ayah"
+                type="com.example.domain.entity.quran.Ayah" />
+            <variable
+                name="listener"
+                type="com.example.ramadan_kareem.util.AyahItemListener" />
+        </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:background="@color/homeCardViewBackgroundDarkInverse1"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_5sdp"
+                    android:background="@color/homeCardViewBackgroundDarkInverse2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_weight="1"
+                        android:gravity="start|center"
+                        setAyaNumber="@{ayah}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/aya_rcv_layout_imgPlay"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:onClick="@{() -> listener.onBtnPlayAyaClicked(ayah)}"
+                        android:src="@drawable/baseline_play_circle_filled_24" />
+
+                    <ImageView
+                        android:onClick="@{() -> listener.onBtnShareAyaClicked(ayah)}"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:src="@drawable/baseline_share_24" />
+
+                    <ImageView
+                        android:onClick="@{() -> listener.onBtnCopyAyahClicked(ayah)}"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:src="@drawable/baseline_content_copy_24" />
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/aya_rcv_layout_lottiSave"
+                        addToFavourite="@{0}"
+                        android:onClick="@{() -> listener.onBtnSaveAyahClicked(ayah)}"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        app:lottie_autoPlay="false"
+                        app:lottie_loop="false"
+                        app:lottie_rawRes="@raw/heart6" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/aya_rcv_layout_txtAyaArabic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:fontFamily="@font/hafs"
+                    setAyaText="@{ayah}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_16ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+                <TextView
+                    android:id="@+id/aya_rcv_layout_txtAyaEnglish"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:text="And David and Solomon, when they were judging the field, when the people’s sheep scattered therein, and we were witnesses to their judgment."
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aya_rcv_layout_txtAyaArabic" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

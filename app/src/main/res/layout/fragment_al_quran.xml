@@ -13,9 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.AlQuran"
-        android:background="@drawable/home_background">
+        android:background="@color/homeBackgroundColorDark">
 
         <TextView
+            android:paddingTop="@dimen/_15sdp"
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +46,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/card_background"
+                android:background="@drawable/card_background2"
                 android:padding="@dimen/_10sdp">
 
                 <TextView
@@ -56,7 +57,7 @@
                     android:gravity="center|start"
                     android:text="الاخيره"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_10ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:drawableEndCompat="@drawable/read"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -90,7 +91,7 @@
                     android:gravity="center|start"
                     android:text="رقم الايه :"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_10ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:layout_constraintEnd_toEndOf="@+id/textView2"
                     app:layout_constraintTop_toBottomOf="@+id/textView2" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -143,7 +144,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialCardView3" />
 
+        <ProgressBar
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/alQuranProhressbar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="visible"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/homeCardViewBackgroundDarkInverseIcon"
+            app:layout_constraintTop_toBottomOf="@+id/txt_surah_title" />
         <androidx.recyclerview.widget.RecyclerView
+            android:visibility="invisible"
             android:id="@+id/alQuranRcvQuran"
             android:layout_width="match_parent"
             android:layout_height="0dp"
