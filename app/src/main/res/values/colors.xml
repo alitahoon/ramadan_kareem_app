@@ -44,15 +44,18 @@
     <color name="homebackgroundSecond">#05291F</color>
 
 
+
     <color name="homeBackgroundColorDark">#001D26</color>
     <color name="homeCardViewBackgroundDark">#052732</color>
     <color name="homeCardViewBackgroundDarkInverse1">#09495e</color>
     <color name="homeCardViewBackgroundDarkInverse2">#2a515d</color>
     <color name="homeCardViewBackgroundDarkInverseIcon">#3B9FBD</color>
+    <color name="homeCardViewBackgroundDarkInverseIcon2">#0BAEDF</color>
     <color name="homeCardViewIconColorDark">#59A87D</color>
     <color name="homeMenuIconColor">#AFADAD</color>
     <color name="icon_yello">#E7B10A</color>
     <color name="readMore">#36FA8F</color>
+    <color name="gray">#B4B4B3</color>
 
 
 </resources>

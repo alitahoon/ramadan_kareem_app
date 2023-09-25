@@ -1,6 +1,7 @@
 package com.example.ramadan_kareem.ui
 
 import android.app.Dialog
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.airbnb.lottie.LottieAnimationView
 import com.example.domain.entity.quran.Ayah
 import com.example.domain.entity.quran.Surah
@@ -22,12 +24,16 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class Surah_ayas_viewer(private val surahFromQuran: Surah) : BottomSheetDialogFragment(),AyahItemListener {
 
     private var binding:FragmentSurahAyasViewerBinding?=null
     private val surahAyasViewerViewmodel:Surah_ayas_viewer_Viewmodel by activityViewModels()
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,7 +87,34 @@ class Surah_ayas_viewer(private val surahFromQuran: Surah) : BottomSheetDialogFr
     }
 
     override fun onBtnPlayAyaClicked(ayah: Ayah) {
+        //first we will get the link for aya audio
+        surahAyasViewerViewmodel.getAyaAudioLink(ayah.number)
+        lifecycleScope.launch{
+            surahAyasViewerViewmodel.ayaAudioLink.collect{
+                // Replace with your audio URL
+                val audioUrl = it
+                // Start loading audio using a coroutine
+                CoroutineScope(Dispatchers.IO).launch {
+                    mediaPlayer = loadAudio(audioUrl)
+                    playAudio(binding!!.root)
+                }
+            }
+        }
+    }
+    private suspend fun loadAudio(audioUrl: String): MediaPlayer? {
+        return try {
+            MediaPlayer().apply {
+                setDataSource(audioUrl)
+                prepare()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
 
+    fun playAudio(view: View) {
+        mediaPlayer?.start()
     }
 
     override fun onBtnCopyAyahClicked(ayah: Ayah) {

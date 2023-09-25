@@ -1,17 +1,20 @@
 package com.example.ramadan_kareem.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.ramadan_kareem.R
+import com.example.ramadan_kareem.databinding.FragmentPrayerTimeBinding
+import com.example.ramadan_kareem.util.getAzanData
 
 class Prayer_time : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
+    private val TAG="Prayer_time"
+    private val prayerTimeviewmodel:Prayer_timeViewmodel by activityViewModels()
+    private var binding:FragmentPrayerTimeBinding?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -21,8 +24,13 @@ class Prayer_time : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_prayer_time, container, false)
+        Log.d(TAG,"${getAzanData(requireContext())}")
+        binding= FragmentPrayerTimeBinding.inflate(inflater,container,false)
+            .apply{
+                this.azan=getAzanData(requireContext())
+            }
+
+       return binding!!.root
     }
 
     companion object {

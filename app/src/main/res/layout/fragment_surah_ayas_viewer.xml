@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/homeBackgroundColorDark"
+        android:background="@color/homeCardViewBackgroundDark"
         tools:context=".ui.Surah_ayas_viewer">
 
         <com.google.android.material.card.MaterialCardView
@@ -44,18 +44,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-<!--                <TextView-->
-<!--                    android:id="@+id/surahAyasViewer_txtSurahAyasNumber"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:fontFamily="@font/hafs"-->
-<!--                    android:text="6 ايات"-->
-<!--                    setSurahAyaNumber="@{surah.ayahs}"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:textSize="@dimen/_14ssp"-->
-<!--                    app:layout_constraintEnd_toEndOf="@+id/surahAyasViewer_txtSurahName"-->
-<!--                    app:layout_constraintStart_toStartOf="@+id/surahAyasViewer_txtSurahName"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/surahAyasViewer_txtSurahName" />-->
+                <!--                <TextView-->
+                <!--                    android:id="@+id/surahAyasViewer_txtSurahAyasNumber"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:fontFamily="@font/hafs"-->
+                <!--                    android:text="6 ايات"-->
+                <!--                    setSurahAyaNumber="@{surah.ayahs}"-->
+                <!--                    android:textColor="@color/white"-->
+                <!--                    android:textSize="@dimen/_14ssp"-->
+                <!--                    app:layout_constraintEnd_toEndOf="@+id/surahAyasViewer_txtSurahName"-->
+                <!--                    app:layout_constraintStart_toStartOf="@+id/surahAyasViewer_txtSurahName"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/surahAyasViewer_txtSurahName" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

@@ -68,6 +68,10 @@ class Home : Fragment() {
             val action = HomeDirections.actionHomeToQibla()
             mNavController.navigate(action)
         }
+        binding.prayer.setOnClickListener {
+            val action = HomeDirections.actionHomeToPrayerTime()
+            mNavController.navigate(action)
+        }
         setCurrantTime()
         homeViewModel.getAzan()
         return binding.root

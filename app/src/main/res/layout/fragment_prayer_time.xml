@@ -1,14 +1,276 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.Prayer_time">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="azan"
+            type="com.example.domain.entity.azan.AzanResponse" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".ui.Prayer_time"
+        android:fillViewport="true"
+        android:background="@color/homeCardViewBackgroundDark">
 
-</FrameLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_marginHorizontal="@dimen/_30sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"
+                    android:background="@drawable/prayer_background2"
+                    android:padding="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/prayerTime_fajr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/hafs"
+                        android:text="صلاة الفجر"
+                        android:textColor="@color/homeCardViewBackgroundDarkInverseIcon2"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/prayerTime_fajrTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00:00:00"
+                        setFajrAzanTime="@{azan}"
+                        android:textColor="@color/homeCardViewBackgroundDarkInverseIcon2"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/prayerTime_fajr" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/prayerTime_switchFajr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/prayerTime_fajrTime" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_marginHorizontal="@dimen/_30sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"
+                    android:background="@drawable/prayer_background2"
+                    android:padding="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/prayerTime_TxtZuhr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/hafs"
+                        android:text="صلاة الظهر"
+                        android:textColor="@color/homeCardViewBackgroundDarkInverseIcon2"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/prayerTime_TxtZuhrTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00:00:00"
+                        setDhuhrAzanTime="@{azan}"
+                        android:textColor="@color/homeCardViewBackgroundDarkInverseIcon2"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/prayerTime_TxtZuhr" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/prayerTime_switchZuhr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/prayerTime_TxtZuhrTime" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_marginHorizontal="@dimen/_30sdp"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"
+                    android:background="@drawable/prayer_background2"
+                    android:padding="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/prayerTime_TxtAsr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/hafs"
+                        android:text="صلاة العصر"
+                        android:textColor="@color/homeCardViewBackgroundDarkInverseIcon2"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/prayerTime_TxtAsrTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00:00:00"
+                        setAsrAzanTime="@{azan}"
+                        android:textColor="@color/homeCardViewBackgroundDarkInverseIcon2"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/prayerTime_TxtAsr" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/prayerTime_switchAsr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/prayerTime_TxtAsrTime" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_marginHorizontal="@dimen/_30sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"
+                    android:background="@drawable/prayer_background2"
+                    android:padding="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/prayerTime_Txtmakhrep"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/hafs"
+                        android:text="صلاة المغرب"
+                        android:textColor="@color/homeCardViewBackgroundDarkInverseIcon2"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/prayerTime_TxtMakhrepTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00:00:00"
+                        setMaghribAzanTime="@{azan}"
+                        android:textColor="@color/homeCardViewBackgroundDarkInverseIcon2"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/prayerTime_Txtmakhrep" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/prayerTime_switchMakhrap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/prayerTime_TxtMakhrepTime" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_marginHorizontal="@dimen/_30sdp"
+                android:layout_width="match_parent"
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_10sdp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"
+                    android:background="@drawable/prayer_background2"
+                    android:padding="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/prayerTime_TxtEshaa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/hafs"
+                        android:text="صلاة العشاء"
+                        android:textColor="@color/homeCardViewBackgroundDarkInverseIcon2"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        setIshaAzanTime="@{azan}"
+                        android:id="@+id/prayerTime_TxtEshaaTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00:00:00"
+                        android:textColor="@color/homeCardViewBackgroundDarkInverseIcon2"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/prayerTime_TxtEshaa" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/prayerTime_switchEshaa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/prayerTime_TxtEshaaTime"
+                        app:layout_constraintTop_toBottomOf="@+id/prayerTime_TxtEshaaTime" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

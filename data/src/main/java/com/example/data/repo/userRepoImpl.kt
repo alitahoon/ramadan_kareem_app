@@ -90,6 +90,13 @@ class userRepoImpl(
         return gson.fromJson(azkarString, object : TypeToken<List<AzkarRespons>>() {}.type)
     }
 
+    override suspend fun getAyaAudioLinkFromRemote(
+        ayaNumber: Int,
+        result: (Resource<String>) -> Unit
+    ) {
+        assestClass.loadQuranAudionDataFromJson(context,"quraan_audio.json",ayaNumber,result)
+    }
+
     override suspend fun getAzkarFromLocal(result: (Resource<List<AzkarRespons>>) -> Unit) {
 
         val response = getAllAzkar()

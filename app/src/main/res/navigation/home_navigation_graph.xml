@@ -35,7 +35,11 @@
             app:destination="@+id/favourite" />
         <action
             android:id="@+id/action_home_to_prayer_time"
-            app:destination="@id/prayer_time" />
+            app:destination="@id/prayer_time"
+            app:enterAnim="@anim/enter"
+            app:exitAnim="@anim/exit"
+            app:popEnterAnim="@anim/pop_enter"
+            app:popExitAnim="@anim/pop_exit" />
         <action
             android:id="@+id/action_home_to_calender"
             app:destination="@id/Calender" />

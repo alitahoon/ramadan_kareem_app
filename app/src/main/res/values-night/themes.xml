@@ -14,5 +14,18 @@
         <!-- Status bar color. -->
 <!--        <item name="android:statusBarColor">#358359</item>-->
         <!-- Customize your theme here. -->
+
+    </style>
+
+    <style name="ExpandedAppBarTextStyle" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CollapsedAppBarTextStyle" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">normal</item>
     </style>
 </resources>

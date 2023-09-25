@@ -18,5 +18,6 @@ interface UserRepo {
 
     suspend fun getAzanFromRemote(month:Int, year:Int, location: LatLng, result: (Resource<AzanResponse>) -> Unit)
     suspend fun getUserCurrantLocationJustOnce(result: (Resource<Location>) -> Unit)
+    suspend fun getAyaAudioLinkFromRemote(ayaNumber:Int,result: (Resource<String>) -> Unit)
 
 }
