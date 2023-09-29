@@ -3,9 +3,11 @@ package com.example.trainlivelocation.di
 import com.example.data.data.ApiAzanService
 import com.example.data.data.ApiHadithService
 import com.example.data.data.ApiQuranService
+import com.example.data.data.ApiTafsirService
 import com.example.ramadan_kareem.util.constant.Companion.BASE_URL_AZAN
 import com.example.ramadan_kareem.util.constant.Companion.BASE_URL_HADITH
 import com.example.ramadan_kareem.util.constant.Companion.BASE_URL_QURAAN
+import com.example.ramadan_kareem.util.constant.Companion.BASE_URL_TAFSIR
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -82,6 +84,24 @@ object NetworkModule {
     @Singleton
     fun provideApiServiceForAzan(@Named("Azan") retrofit: Retrofit): ApiAzanService {
         return retrofit.create(ApiAzanService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    @Named("Tafsir")
+    fun provideRetrofitForTafsir(okHttpClient: OkHttpClient):Retrofit{
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL_TAFSIR)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+    }
+
+    @Provides
+    @Singleton
+    fun provideApiServiceForTafsir(@Named("Tafsir") retrofit: Retrofit): ApiTafsirService {
+        return retrofit.create(ApiTafsirService::class.java)
     }
 
 }

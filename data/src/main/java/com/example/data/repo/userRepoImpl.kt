@@ -7,12 +7,15 @@ import android.util.Log
 import com.example.data.data.ApiAzanService
 import com.example.data.data.ApiHadithService
 import com.example.data.data.ApiQuranService
+import com.example.data.data.ApiTafsirService
 import com.example.data.data.AssestClass
 import com.example.data.data.GetCurrantLocationJustOnce
 import com.example.domain.entity.azan.AzanResponse
 import com.example.domain.entity.azkar.AzkarRespons
 import com.example.domain.entity.hadith.HadithResponse
 import com.example.domain.entity.quran.QuranResponse
+import com.example.domain.entity.quran_audio.QuranAudioResponse
+import com.example.domain.entity.quran_en.QuranEnglishResponse
 import com.example.domain.repo.UserRepo
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -26,6 +29,7 @@ class userRepoImpl(
     private val context:Context,
     private val azanService: ApiAzanService,
     private val getCurrantLocationJustOnce: GetCurrantLocationJustOnce
+    ,private val apiTafsirService: ApiTafsirService
 ) : UserRepo {
     private val TAG = "userRepoImpl"
     override suspend fun getHadithFromRemote(result: (Resource<HadithResponse>) -> Unit) {
@@ -70,8 +74,8 @@ class userRepoImpl(
         getCurrantLocationJustOnce.startGettingLocation(result)
     }
 
-    override suspend fun getQuranFromRemote(result: (Resource<QuranResponse>) -> Unit) {
-        assestClass.loadDataFromJson(context,"quran.json",result)
+    override suspend fun getQuranFromRemote(result: (Resource<QuranAudioResponse>) -> Unit) {
+        assestClass.loadDataFromJson(context,"quraan_audio.json",result)
 
     }
 
@@ -95,6 +99,14 @@ class userRepoImpl(
         result: (Resource<String>) -> Unit
     ) {
         assestClass.loadQuranAudionDataFromJson(context,"quraan_audio.json",ayaNumber,result)
+    }
+
+    override suspend fun getEnglishQuran(result: (Resource<QuranEnglishResponse>) -> Unit) {
+        assestClass.loadEnglishQuranFromJson(context,"quran_en.json",result)
+    }
+
+    override suspend fun getAyaInEnglish(ayaNumber: Int, result: (Resource<String>) -> Unit) {
+        assestClass.getAyaInTranlation(ayaNumber,context,"quran_en.json",result)
     }
 
     override suspend fun getAzkarFromLocal(result: (Resource<List<AzkarRespons>>) -> Unit) {

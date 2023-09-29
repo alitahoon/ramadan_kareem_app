@@ -6,7 +6,7 @@
     <data>
         <variable
             name="surah"
-            type="com.example.domain.entity.quran.Surah" />
+            type="com.example.domain.entity.quran_audio.Surah" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

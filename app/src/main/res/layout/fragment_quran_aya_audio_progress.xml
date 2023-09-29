@@ -1,10 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.QuranAyaAudioProgress">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="sureh"
+            type="String" />
+        <variable
+            name="ayeh"
+            type="String" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/homeCardViewBackgroundDarkInverse1"
+        tools:context=".ui.QuranAyaAudioProgress">
 
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</FrameLayout>
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_180sdp"
+                android:src="@drawable/player_background"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/quranAyaAudionProgressTxtSurehName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_2sdp"
+                android:fontFamily="@font/hafs"
+                android:text="@{sureh}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16ssp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/quranAyaAudionProgresslinearProgressIndicator"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/quranAyaAudionProgressTxtAyaNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_2sdp"
+                android:fontFamily="@font/hafs"
+                android:text="@{ayeh}"
+                android:textColor="@color/white"
+                android:layout_marginStart="@dimen/_80sdp"
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/quranAyaAudionProgresslinearProgressIndicator"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView9" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/quranAyaAudionProgresslinearProgressIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:trackColor="@color/homeCardViewBackgroundDarkInverseIcon"
+                app:indicatorColor="@color/white"
+                android:progress="0"
+                app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/homeCardViewBackgroundDark"
+                android:padding="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@+id/quranAyaAudionProgresslinearProgressIndicator">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/quranAyaAudionProgressBtnNext"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:src="@drawable/baseline_skip_next_24"
+                    app:civ_circle_background_color="@color/homeCardViewBackgroundDarkInverse1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/quranAyaAudionProgressBtnStop" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/quranAyaAudionProgressBtnAutoPlayNext"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:src="@drawable/baseline_autorenew_24"
+                    app:civ_circle_background_color="@color/homeCardViewBackgroundDarkInverse1"
+                    app:layout_constraintBottom_toBottomOf="@+id/quranAyaAudionProgressBtnStop"
+                    app:layout_constraintEnd_toStartOf="@+id/quranAyaAudionProgressBtnNext"
+                    app:layout_constraintStart_toEndOf="@+id/quranAyaAudionProgressBtnStop"
+                    app:layout_constraintTop_toTopOf="@+id/quranAyaAudionProgressBtnStop" />
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/quranAyaAudionProgressBtnStop"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:src="@drawable/baseline_stop_circle_24"
+                    app:civ_circle_background_color="@color/homeCardViewBackgroundDarkInverse1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/quranAyaAudionProgressBtnPrevios"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:src="@drawable/baseline_skip_previous_24"
+                    app:civ_circle_background_color="@color/homeCardViewBackgroundDarkInverse1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/quranAyaAudionProgressBtnStop" />
+
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/quranAyaAudionProgressBtnSave"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    app:civ_circle_background_color="@color/homeCardViewBackgroundDarkInverseIcon2"
+                    app:layout_constraintBottom_toBottomOf="@+id/quranAyaAudionProgressBtnStop"
+                    app:layout_constraintEnd_toStartOf="@+id/quranAyaAudionProgressBtnStop"
+                    app:layout_constraintStart_toEndOf="@+id/quranAyaAudionProgressBtnPrevios"
+                    app:layout_constraintTop_toTopOf="@+id/quranAyaAudionProgressBtnStop"
+                    app:lottie_autoPlay="false"
+                    app:lottie_loop="false"
+                    app:lottie_rawRes="@raw/heart6" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

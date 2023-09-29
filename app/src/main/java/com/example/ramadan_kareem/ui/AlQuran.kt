@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.domain.entity.quran.Surah
+import com.example.domain.entity.quran_audio.Surah
 import com.example.ramadan_kareem.databinding.FragmentAlQuranBinding
 import com.example.ramadan_kareem.util.QuranCustomAdapter
 import com.example.ramadan_kareem.util.SurahItemListener
@@ -43,6 +43,8 @@ class AlQuran : Fragment() ,SurahItemListener{
         setObservers()
 
     }
+
+
 
     private fun setObservers() {
         lifecycleScope.launch (Dispatchers.IO) {

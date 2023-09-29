@@ -3,8 +3,10 @@ package com.example.ramadan_kareem.util
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.entity.quran.Surah
+import com.example.domain.entity.quran_audio.Surah
+import com.example.ramadan_kareem.R
 import com.example.ramadan_kareem.databinding.QuranSurahRcvItemLayoutBinding
 
 class QuranCustomAdapter(val context: Context, val quransurahList:List<Surah>, val surahItemListener: SurahItemListener) :
@@ -30,5 +32,7 @@ class QuranCustomAdapter(val context: Context, val quransurahList:List<Surah>, v
     override fun onBindViewHolder(holder: QuranviewHolder, position: Int) {
         val item=quransurahList.get(position)
         holder.bind(item!!)
+        holder.itemView.animation =
+            AnimationUtils.loadAnimation(holder.itemView.context, R.anim.rcv_quran_items_animation)
     }
 }

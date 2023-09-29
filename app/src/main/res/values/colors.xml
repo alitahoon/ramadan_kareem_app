@@ -56,6 +56,8 @@
     <color name="icon_yello">#E7B10A</color>
     <color name="readMore">#36FA8F</color>
     <color name="gray">#B4B4B3</color>
+    <color name="player_btn_background_defult">#011F2A</color>
+    <color name="player_btn_background_pressed">#1E4959</color>
 
 
 </resources>

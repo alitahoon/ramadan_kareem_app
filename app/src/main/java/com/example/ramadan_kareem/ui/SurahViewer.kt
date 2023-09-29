@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.example.domain.entity.quran.Surah
+import com.example.domain.entity.quran_audio.Surah
 import com.example.ramadan_kareem.R
 import com.example.ramadan_kareem.databinding.FragmentSurahViewerBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior

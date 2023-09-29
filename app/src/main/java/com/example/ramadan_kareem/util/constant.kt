@@ -7,5 +7,6 @@ class constant {
         //type
         val BASE_URL_QURAAN="http://api.alquran.cloud/v1/"
         val BASE_URL_AZAN="http://api.aladhan.com/v1/"
+        val BASE_URL_TAFSIR="http://api.quran-tafseer.com/"
     }
 }

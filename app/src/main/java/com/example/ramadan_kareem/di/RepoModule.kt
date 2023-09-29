@@ -6,6 +6,7 @@ import com.example.data.*
 import com.example.data.data.ApiAzanService
 import com.example.data.data.ApiHadithService
 import com.example.data.data.ApiQuranService
+import com.example.data.data.ApiTafsirService
 import com.example.data.data.AssestClass
 import com.example.data.data.GetCurrantLocationJustOnce
 import com.example.data.repo.userRepoImpl
@@ -21,8 +22,8 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object RepoModule {
     @Provides
-    fun ProvideRepo(apiHadithService: ApiHadithService,apiQuranService: ApiQuranService,assestClass: AssestClass,@ApplicationContext context: Context,apiAzanService: ApiAzanService,getCurrantLocationJustOnce: GetCurrantLocationJustOnce ): UserRepo {
-        return userRepoImpl(apiHadithService,apiQuranService,assestClass,context,apiAzanService,getCurrantLocationJustOnce)
+    fun ProvideRepo(apiHadithService: ApiHadithService,apiQuranService: ApiQuranService,assestClass: AssestClass,@ApplicationContext context: Context,apiAzanService: ApiAzanService,getCurrantLocationJustOnce: GetCurrantLocationJustOnce ,apiTafsirService: ApiTafsirService): UserRepo {
+        return userRepoImpl(apiHadithService,apiQuranService,assestClass,context,apiAzanService,getCurrantLocationJustOnce, apiTafsirService)
     }
 
     @Provides

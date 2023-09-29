@@ -6,7 +6,7 @@
     <data>
         <variable
             name="surah"
-            type="com.example.domain.entity.quran.Surah" />
+            type="com.example.domain.entity.quran_audio.Surah" />
         <variable
             name="listener"
             type="com.example.ramadan_kareem.util.SurahItemListener" />
