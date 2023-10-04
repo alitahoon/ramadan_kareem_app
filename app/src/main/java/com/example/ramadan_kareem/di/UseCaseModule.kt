@@ -8,6 +8,7 @@ import com.example.domain.usecase.GetAzkarCategory
 import com.example.domain.usecase.GetEnglishQuran
 import com.example.domain.usecase.GetHadith
 import com.example.domain.usecase.GetQuranFromRemote
+import com.example.domain.usecase.GetTafsirForAya
 import com.example.domain.usecase.GetUserCurrantLocation
 import dagger.Module
 import dagger.Provides
@@ -58,5 +59,10 @@ object UseCaseModule {
     fun provideGetAyahInEnglish(userRepo: UserRepo):GetAyahInEnglish{
         return GetAyahInEnglish(userRepo)
     }
+    @Provides
+    fun provideGetTafsirForAya(userRepo: UserRepo):GetTafsirForAya{
+        return GetTafsirForAya(userRepo)
+    }
+
 
 }

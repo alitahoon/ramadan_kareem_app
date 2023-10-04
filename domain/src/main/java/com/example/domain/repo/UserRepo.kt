@@ -9,6 +9,7 @@ import com.example.domain.entity.hadith.HadithResponse
 import com.example.domain.entity.quran.QuranResponse
 import com.example.domain.entity.quran_audio.QuranAudioResponse
 import com.example.domain.entity.quran_en.QuranEnglishResponse
+import com.example.domain.entity.tafsir.TafsirResponse
 import com.google.android.gms.maps.model.LatLng
 import java.time.Year
 
@@ -24,5 +25,6 @@ interface UserRepo {
 
     suspend fun getEnglishQuran(result: (Resource<QuranEnglishResponse>) -> Unit)
     suspend fun getAyaInEnglish(ayaNumber: Int,result: (Resource<String>) -> Unit)
+    suspend fun getTafsirForAya(tafseer_id: Int,sura_number:Int,ayah_number:Int,result: (Resource<TafsirResponse>) -> Unit)
 
 }

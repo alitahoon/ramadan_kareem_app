@@ -1,0 +1,10 @@
+<TextView android:id="@+id/drop_down_item_tafsir_name"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="@dimen/_5sdp"
+    android:textColor="@color/homeCardViewBackgroundDark"
+    android:textStyle="bold"
+    android:background="@color/homeMenuIconColor"
+    android:textSize="@dimen/_12ssp"
+    android:fontFamily="@font/readex_pro_light"
+    android:layout_height="wrap_content"/>

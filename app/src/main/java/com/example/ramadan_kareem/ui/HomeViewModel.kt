@@ -3,6 +3,8 @@ package com.example.ramadan_kareem.ui
 import Resource
 import android.content.Context
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.data.data.GetCurrantLocationJustOnce
@@ -30,6 +32,9 @@ class HomeViewModel @Inject constructor(
     private val _userLocation = MutableStateFlow<LatLng>(LatLng(0.0, 0.0))
     val userLocation: StateFlow<LatLng> = _userLocation
 
+    private val _azanResponse= MutableLiveData<AzanResponse>(null)
+    val azanResponse:LiveData<AzanResponse> = _azanResponse
+
 
     fun getAzan() {
         viewModelScope.launch(Dispatchers.Main) {
@@ -55,6 +60,7 @@ class HomeViewModel @Inject constructor(
                                     is Resource.Success -> {
                                         Log.d(TAG, "${it.data}")
                                         //store data in sharedPreferences
+                                        _azanResponse.value=it.data!!
                                         saveAzandata(it.data)
                                     }
 
@@ -86,6 +92,7 @@ class HomeViewModel @Inject constructor(
         editor.putString(AZAN_PREF_KEY, jsonString)
         editor.apply()
     }
+
 }
 
 

@@ -15,7 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/homeCardViewBackgroundDark"
+        android:background="@drawable/background_sh_2"
         tools:context=".ui.Surah_ayas_viewer">
 
 
@@ -64,31 +64,63 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/facbook_aya_shimmer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/surehAyaesViewerCardSurehName"
+            app:shimmer_repeat_mode="restart"
+            app:shimmer_shape="radial"
+            android:paddingVertical="@dimen/_5sdp"
+            android:paddingHorizontal="@dimen/_15sdp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/facbook_aya_item_shimmer" />
+
+                <include layout="@layout/facbook_aya_item_shimmer" />
+
+                <include layout="@layout/facbook_aya_item_shimmer" />
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
 
         <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
+            android:nestedScrollingEnabled="true"
             android:id="@+id/surahAyaViewrRcv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/_15sdp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@+id/surehAyaesViewerCardSurehName"
             tools:listitem="@layout/aya_rcv_layout" />
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/coordinatorLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
                 android:id="@+id/player_bottom_sheet_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/homeCardViewBackgroundDarkInverse1"
                 app:behavior_hideable="false"
                 app:behavior_peekHeight="@dimen/_30sdp"
-                app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-                android:layout_height="wrap_content"
                 app:cardCornerRadius="@dimen/_15sdp"
-                android:backgroundTint="@color/homeCardViewBackgroundDarkInverse1"
+                app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
                 tools:context=".ui.QuranAyaAudioProgress">
 
 
@@ -96,13 +128,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                   >
+                    >
+
                     <androidx.appcompat.widget.AppCompatButton
-                        android:drawableTop="@drawable/baseline_arrow_drop_up_24"
                         android:id="@+id/player_btn_scroll_card"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
                         android:background="@drawable/player_scroll_btn_selector"
+                        android:drawableTop="@drawable/baseline_arrow_drop_up_24"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -168,8 +201,8 @@
                             android:id="@+id/quranAyaAudionProgressBtnNext"
                             android:layout_width="@dimen/_35sdp"
                             android:layout_height="@dimen/_35sdp"
-                            android:src="@drawable/baseline_skip_next_24"
                             android:background="@drawable/auto_play_btn_selectore"
+                            android:src="@drawable/baseline_skip_next_24"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/quranAyaAudionProgressBtnStop" />
 
@@ -178,8 +211,8 @@
                             android:id="@+id/quranAyaAudionProgressBtnAutoPlayNext"
                             android:layout_width="@dimen/_35sdp"
                             android:layout_height="@dimen/_35sdp"
-                            android:clickable="true"
                             android:background="@drawable/circle"
+                            android:clickable="true"
                             android:src="@drawable/baseline_autorenew_24"
                             app:layout_constraintBottom_toBottomOf="@+id/quranAyaAudionProgressBtnStop"
                             app:layout_constraintEnd_toStartOf="@+id/quranAyaAudionProgressBtnNext"
@@ -192,8 +225,8 @@
                             android:id="@+id/quranAyaAudionProgressBtnStop"
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
-                            android:src="@drawable/baseline_stop_circle_24"
                             android:background="@drawable/auto_play_btn_selectore"
+                            android:src="@drawable/baseline_stop_circle_24"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -202,9 +235,9 @@
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/quranAyaAudionProgressBtnPrevios"
                             android:layout_width="@dimen/_35sdp"
+                            android:background="@drawable/auto_play_btn_selectore"
                             android:layout_height="@dimen/_35sdp"
                             android:src="@drawable/baseline_skip_previous_24"
-                            app:civ_circle_background_color="@color/homeCardViewBackgroundDarkInverse1"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/quranAyaAudionProgressBtnStop" />
 

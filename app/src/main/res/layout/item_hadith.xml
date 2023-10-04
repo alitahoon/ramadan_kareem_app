@@ -8,7 +8,7 @@
     android:layout_marginBottom="@dimen/_16sdp"
     app:strokeWidth="1dp"
     android:layoutDirection="rtl"
-    app:strokeColor="@color/homeCardViewIconColorDark"
+    app:strokeColor="@color/icon_yello"
     android:backgroundTint="@color/homeCardViewBackgroundDark">
 
     <LinearLayout
@@ -24,20 +24,20 @@
                 android:text="إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى، فَمَنْ كَانَتْ هِجْرَتُهُ إِلَى دُنْيَا يُصِيبُهَا أَوْ إِلَى امْرَأَةٍ يَنْكِحُهَا فَهِجْرَتُهُ إِلَى مَا هَاجَرَ إِلَيْهِ"
                 android:padding="@dimen/_12sdp"
                 android:textSize="@dimen/_18ssp"
-                android:textColor="@color/homeCardViewIconColorDark"
+                android:textColor="@color/homeCardViewBackgroundDarkInverseIcon"
                 app:readMoreMaxLine="5"
                 app:readMoreText="...قراءة المزيد"
-                app:readMoreColor="@color/readMore"/>
+                app:readMoreColor="@color/icon_yello"/>
 
             <TextView
-                android:fontFamily="@font/hafs"
+                android:fontFamily="@font/readex_pro_regular"
                 android:id="@+id/hadith_book_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="كتاب بدء الوحى"
                 android:paddingHorizontal="@dimen/_12sdp"
                 android:paddingBottom="@dimen/_8sdp"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_12ssp"
                 android:gravity="center"
                 android:background="#30000000"
                 android:textColor="@color/white"/>

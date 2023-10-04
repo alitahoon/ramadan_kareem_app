@@ -1,9 +1,14 @@
 package com.example.ramadan_kareem.util
 
 import Resource
+import android.graphics.Color
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.util.Log
+import android.widget.AutoCompleteTextView
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.airbnb.lottie.Lottie
 import com.airbnb.lottie.LottieAnimationView
@@ -11,7 +16,10 @@ import com.example.domain.entity.azan.AzanResponse
 import com.example.domain.entity.quran_audio.Ayah
 import com.example.domain.entity.quran_audio.Surah
 import com.example.domain.usecase.GetAyahInEnglish
+import com.example.domain.usecase.GetTafsirForAya
 import com.example.ramadan_kareem.R
+import com.example.ramadan_kareem.ui.Surah_ayas_viewer
+import com.example.ramadan_kareem.ui.showFullText
 import com.ramotion.foldingcell.FoldingCell
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -19,18 +27,29 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import java.util.Calendar
 import javax.inject.Inject
+import android.widget.ArrayAdapter
 
 class BindingMethods @Inject constructor(
-    private val getAyahInEnglish: GetAyahInEnglish
-):onSettingAyatranslation{
+    private val getAyahInEnglish: GetAyahInEnglish,
+    private val getTafsirForAya: GetTafsirForAya
+):onSettingAya{
     val coroutineScope: CoroutineScope = MainScope()
     init {
         setListener(this)
     }
     companion object{
+        val colorArabicSpan = ForegroundColorSpan(Color.GREEN)
+        val colorEnglishSpan = ForegroundColorSpan(Color.YELLOW)
+        private var moretextArabic=SpannableString("اضغط لقراءة المزيد").apply {
+            this.setSpan(colorArabicSpan,0,17,SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+        }
+        private var moretextEnglish=SpannableString("Read more...").apply {
+           this.setSpan(colorEnglishSpan,0,12,SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+        }
+        private lateinit var adapter: ArrayAdapter<String>
         private val TAG="bindingMethods"
-        private var listener: onSettingAyatranslation? = null
-        fun setListener(listener: onSettingAyatranslation) {
+        private var listener: onSettingAya? = null
+        fun setListener(listener: onSettingAya) {
             this.listener = listener
         }
         @BindingAdapter("setSurahAya")
@@ -204,15 +223,56 @@ class BindingMethods @Inject constructor(
         fun setAyaenglishTranslation(textView: TextView,ayaNumber:Int){
             listener!!.setAyaNumber(textView,ayaNumber)
         }
+        @BindingAdapter("tafseer_id","sura_number","ayah_number")
+        @JvmStatic
+        fun setAyaTafseer(textView: TextView, tafseer_id:Int,sura_number: Int, ayah_number: Int){
+            listener!!.setAyaTafsir(textView,tafseer_id,sura_number,ayah_number)
+        }
+
+        @BindingAdapter("fillTafsirAutoTxt")
+        @JvmStatic
+        fun fillTafsirAutoTxt(textView: AutoCompleteTextView,i:Int){
+           var tafsirArrayOfString=textView.context.resources.getStringArray(R.array.tafsir_title)
+            adapter = ArrayAdapter(textView.context,R.layout.drop_down_item,tafsirArrayOfString)
+            textView.setAdapter(adapter)
+        }
     }
 
     override fun setAyaNumber(textView: TextView, ayaNumber: Int) {
-        coroutineScope.launch (Dispatchers.Main){
+        coroutineScope.launch (Dispatchers.IO){
             getAyahInEnglish(ayaNumber){
                 when(it){
                     is Resource.Success->{
                         Log.d(TAG,"aya in english -> ${it.data}")
-                        textView.setText(it.data)
+                        coroutineScope.launch (Dispatchers.Main){
+                            if (it.data.length>300){
+                                textView.setText(it.data+ moretextEnglish)
+                            }else{
+                                textView.setText(it.data)
+                            }                        }                    }
+                    is Resource.Failure->{
+                        Log.e(TAG,"${it.error}")
+                    }
+                    is Resource.Loading->{}
+                    else -> {}
+                }
+            }
+        }
+    }
+
+    override fun setAyaTafsir(textView: TextView, tafseer_id:Int,sura_number: Int, ayah_number: Int) {
+        coroutineScope.launch (Dispatchers.IO){
+            getTafsirForAya(tafseer_id,sura_number,ayah_number){
+                when (it){
+                    is Resource.Success->{
+                        Log.d(TAG,"aya tafsir -> ${it.data}")
+                        coroutineScope.launch (Dispatchers.Main){
+                            if (it.data.text.length>300){
+                                textView.setText(it.data.text+ moretextArabic)
+                            }else{
+                                textView.setText(it.data.text)
+                            }
+                        }
                     }
                     is Resource.Failure->{
                         Log.e(TAG,"${it.error}")
@@ -227,6 +287,7 @@ class BindingMethods @Inject constructor(
 
 }
 
-interface onSettingAyatranslation{
+interface onSettingAya{
     fun setAyaNumber(textView: TextView,ayaNumber: Int)
+    fun setAyaTafsir( textView: TextView,tafseer_id:Int,sura_number: Int, ayah_number: Int)
 }

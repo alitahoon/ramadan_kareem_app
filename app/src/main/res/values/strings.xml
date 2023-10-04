@@ -6,4 +6,19 @@
     <string name="Search">Search</string>
     <string name="Favourite">Favourite</string>
     <string name="Calender">Calender</string>
+
+    <string-array name="tafsir_title">
+        <item>التفسير الميسر</item>
+        <item>تفسير الجلالين</item>
+        <item>تفسير السعدي</item>
+        <item>تفسير ابن كثير</item>
+        <item>تفسير الوسيط لطنطاوي</item>
+        <item>تفسير البغوي</item>
+        <item>تفسير القرطبي</item>
+        <item>تفسير الطبري</item>
+        <item>Arberry</item>
+        <item>Keyzer</item>
+        <item>Leemhuis</item>
+        <item>Siregar</item>
+    </string-array>
 </resources>

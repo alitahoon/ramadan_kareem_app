@@ -11,6 +11,7 @@ import com.example.data.data.AssestClass
 import com.example.data.data.GetCurrantLocationJustOnce
 import com.example.data.repo.userRepoImpl
 import com.example.domain.repo.UserRepo
+import com.example.ramadan_kareem.util.BindingMethods
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,6 +31,8 @@ object RepoModule {
     fun ProvideAssetsClass ():AssestClass{
         return AssestClass()
     }
+
+
     @Provides
     fun ProvideGetCurrantLocationJustOnce(context: Context):GetCurrantLocationJustOnce{
         return GetCurrantLocationJustOnce(context)

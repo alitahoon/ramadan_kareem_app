@@ -8,19 +8,25 @@
                 name="ayah"
                 type="com.example.domain.entity.quran_audio.Ayah" />
             <variable
+                name="sura_id"
+                type="int" />
+            <variable
                 name="listener"
                 type="com.example.ramadan_kareem.util.AyahItemListener" />
         </data>
 <com.ramotion.foldingcell.FoldingCell
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:animationDuration="1000"
+    app:animationDuration="2000"
     android:clipChildren="false"
+    app:additionalFlipsCount="2"
+    app:cameraHeight="60"
     android:layout_margin="@dimen/_10sdp"
     android:clipToPadding="false"
     android:id="@+id/aya_rcv_item_folding_layout"
     app:backSideColor="@color/homeMenuIconColor">
     <FrameLayout
+        android:visibility="gone"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:id="@+id/cell_content_view"
@@ -29,22 +35,23 @@
         >
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_450sdp"
             app:cardCornerRadius="@dimen/_10sdp"
             android:backgroundTint="@color/homeCardViewBackgroundDarkInverse1">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textSize="@dimen/_14ssp"
+                    android:textSize="@dimen/_12ssp"
                     android:padding="@dimen/_10sdp"
                     android:background="@color/homebackgroundFirst"
                     android:textColor="@color/white"
-                    android:text="الترجمه"
+                    android:text="الترجمه و التفسير"
                     android:fontFamily="@font/readex_pro_bold"
                     android:gravity="center"/>
                 <LinearLayout
@@ -67,20 +74,6 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
-
-                    <!--                    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-                    <!--                        android:id="@+id/aya_rcv_layout_imgPlay"-->
-                    <!--                        playAyahSound="@{0}"-->
-                    <!--                        android:layout_width="@dimen/_30sdp"-->
-                    <!--                        android:layout_height="@dimen/_30sdp"-->
-                    <!--                        android:backgroundTint="@color/white"-->
-                    <!--                        android:src="@drawable/play_audio_btn_selector"-->
-                    <!--                        app:fabCustomSize="@dimen/_30sdp"-->
-                    <!--                        app:fabSize="auto"-->
-                    <!--                        app:maxImageSize="@dimen/_30sdp"-->
-                    <!--                        app:rippleColor="@color/white"-->
-                    <!--                        app:tint="@color/homeCardViewBackgroundDarkInverse2" />-->
-
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -98,68 +91,87 @@
                     <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/aya_rcv_layout_lottiSaveFoldingContent"
                         listener="@{listener}"
-                        aya="@{ayah"
+                        aya="@{ayah}"
                         android:layout_width="@dimen/_30sdp"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="@dimen/_5sdp"
                         app:lottie_autoPlay="false"
                         app:lottie_loop="false"
                         app:lottie_rawRes="@raw/heart6" />
-                </LinearLayout>
 
+                </LinearLayout>
                 <TextView
+                    android:id="@+id/aya_rcv_layout_txtEnglish"
+                    android:fontFamily="@font/hafs"
                     translateAya="@{ayah.number}"
                     android:layout_margin="@dimen/_5sdp"
-                    android:id="@+id/aya_rcv_layout_txtEnglish"
-                    android:layout_width="match_parent"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="And David and Solomon, when they were judging the field, when the people’s sheep scattered therein, and we were witnesses to their judgment."
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16ssp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/aya_rcv_layout_txtAyaEnglish" />
-                <TextView
+                    android:padding="@dimen/_12sdp"
+                    android:maxLines="5"/>
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/_12ssp"
-                    android:padding="@dimen/_5sdp"
-                    android:background="@color/homeMenuIconColor"
-                    android:textColor="@color/homeCardViewBackgroundDarkInverse2"
-                    android:text="التفسير"
-                    android:fontFamily="@font/readex_pro_bold"
-                    android:gravity="center"/>
-                <TextView
                     android:layout_margin="@dimen/_5sdp"
-                    android:id="@+id/aya_rcv_layout_txtExplain"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+                    android:layout_gravity="end"
+                    app:endIconTint="@color/player_btn_background_pressed"
+                    app:endIconScaleType="fitXY"
+                    android:layout_height="wrap_content">
+                    <AutoCompleteTextView
+                        fillTafsirAutoTxt="@{0}"
+                        android:id="@+id/aya_item_txt_autoComplite"
+                        android:padding="@dimen/_5sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/readex_pro_light"
+                        android:textSize="@dimen/_12ssp"
+                        android:textColor="@color/player_btn_background_pressed"
+                        android:inputType="none"
+                        android:background="@color/homeMenuIconColor"
+                        android:text="التفسير الميسر"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <ScrollView
                     android:layout_width="match_parent"
+                    android:id="@+id/aya_rcv_tafsir_scrollView"
                     android:layout_height="wrap_content"
-                    android:text="And David and Solomon, when they were judging the field, when the people’s sheep scattered therein, and we were witnesses to their judgment."
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_16ssp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/aya_rcv_layout_txtAyaEnglish" />
+                    android:layout_weight="1"
+                    android:fillViewport="true">
+                    <TextView
+                        android:id="@+id/aya_rcv_layout_txttafsirContent"
+                        android:fontFamily="@font/hafs"
+                        tafseer_id="@{1}"
+                        android:layout_weight="1"
+                        android:gravity="top"
+                        sura_number="@{sura_id}"
+                        ayah_number="@{ayah.numberInSurah}"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10ssp"
+                        android:maxLines="10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="يا من آمنتم بالله واتبعتم رسوله محمدًا صلى الله عليه وسلم إذا تعاملتم بدَيْن إلى وقت معلوم فاكتبوه؛ حفظًا للمال ودفعًا للنزاع. ولْيقُم بالكتابة رجل أمين ضابط، ولا يمتنع مَن علَّمه الله الكتابة عن ذلك، ولْيقم المدين بإملاء ما عليه من الدَّيْن، وليراقب ربه، ولا ينقص من دينه شيئا. فإن كان المدين محجورًا عليه لتبذيره وإسرافه، أو كان صغيرًا أو مجنونًا، أو لا يستطيع النطق لخرس به أو عدم قدرة كاملة على الكلام، فليتولَّ الإملاء عن المدين القائم بأمره، واطلبوا شهادة رجلين مسلمَيْن بالِغَيْن عاقلَيْن من أهل العدالة. فإن لم يوجد رجلان، فاطلبوا شهادة رجل وامرأتين ترضون شهادتهم، حتى إذا نَسِيَتْ إحداهما ذكَّرتها الأخرى، وعلى الشهداء أن يجيبوا مَن دعاهم إلى الشهادة، وعليهم أداؤها إذا ما دعوا إليها، ولا تَمَلُّوا من كتابة الدَّين قليلا أو كثيرًا إلى وقته المعلوم. ذلكم أعدل في شرع الله وهديه، وأعظم عونًا على إقامة الشهادة وأدائها، وأقرب إلى نفي الشك في جنس الدَّين وقدره وأجله. لكن إن كانت المسألة مسألة بيع وشراء، بأخذ سلعة ودفع ثمنها في الحال، فلا حاجة إلى الكتابة، ويستحب الإشهاد على ذلك منعًا للنزاع والشقاق، ومن الواجب على الشاهد والكاتب أداء الشهادة على وجهها والكتابة كما أمر الله. ولا يجوز لصاحب الحق ومَن عليه الحق الإضرار بالكُتَّاب والشهود، وكذلك لا يجوز للكُتَّاب والشهود أن يضارُّوا بمن احتاج إلى كتابتهم أو شهادتهم، وإن تفعلوا ما نهيتم عنه فإنه خروج عن طاعة الله، وعاقبة ذلك حالَّة بكم. وخافوا الله في جميع ما أمركم به، ونهاكم عنه، ويعلمكم الله جميع ما يصلح دنياكم وأخراكم. والله بكل شيء عليم، فلا يخفى عليه شيء من أموركم، وسيجازيكم على ذلك."
+                        android:padding="@dimen/_5sdp" />
+                </ScrollView>
+
+
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/aya_rcv_item_btn_less"
                     android:layout_width="match_parent"
+                    android:layout_gravity="bottom"
                     android:layout_height="@dimen/_30sdp"
                     android:background="@drawable/player_scroll_btn_selector"
                     android:drawableBottom="@drawable/baseline_arrow_drop_up_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/aya_rcv_layout_txtAyaArabic" />
-
-
             </LinearLayout>
-
         </com.google.android.material.card.MaterialCardView>
     </FrameLayout>
     <FrameLayout
-        android:visibility="gone"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:layout_width="match_parent"
@@ -167,7 +179,7 @@
         android:layout_height="wrap_content">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/_170sdp">
 
             <com.google.android.material.card.MaterialCardView
                 app:cardCornerRadius="@dimen/_10sdp"
@@ -186,13 +198,13 @@
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/aya_rcv_layout_btnPlay"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_35sdp"
                         android:background="@drawable/btn_play_background_selectore"
-                        android:text="استماع"
+                        android:gravity="center"
                         android:textColor="@color/white"
                         android:onClick="@{() -> listener.onBtnPlayAyaClicked(ayah)}"
-                        android:textSize="@dimen/_12ssp"
-                        android:drawableTop="@drawable/baseline_arrow_drop_up_24"
+                        android:textSize="@dimen/_10ssp"
+                        android:drawableBottom="@drawable/sound"
                         android:fontFamily="@font/readex_pro_bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -208,7 +220,6 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/aya_rcv_layout_btnPlay">
-
                         <TextView
                             setAyaNumber="@{ayah}"
                             android:layout_width="@dimen/_25sdp"
@@ -218,20 +229,6 @@
                             android:textColor="@color/white"
                             android:textSize="@dimen/_14ssp"
                             android:textStyle="bold" />
-
-                        <!--                    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-                        <!--                        android:id="@+id/aya_rcv_layout_imgPlay"-->
-                        <!--                        playAyahSound="@{0}"-->
-                        <!--                        android:layout_width="@dimen/_30sdp"-->
-                        <!--                        android:layout_height="@dimen/_30sdp"-->
-                        <!--                        android:backgroundTint="@color/white"-->
-                        <!--                        android:src="@drawable/play_audio_btn_selector"-->
-                        <!--                        app:fabCustomSize="@dimen/_30sdp"-->
-                        <!--                        app:fabSize="auto"-->
-                        <!--                        app:maxImageSize="@dimen/_30sdp"-->
-                        <!--                        app:rippleColor="@color/white"-->
-                        <!--                        app:tint="@color/homeCardViewBackgroundDarkInverse2" />-->
-
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -248,35 +245,39 @@
 
                         <com.airbnb.lottie.LottieAnimationView
                             android:id="@+id/aya_rcv_layout_lottiSave"
-                            addToFavourite="@{0}"
                             android:layout_width="@dimen/_30sdp"
                             android:layout_height="match_parent"
+                            listener="@{listener}"
+                            aya="@{ayah}"
                             android:layout_marginEnd="@dimen/_5sdp"
                             android:onClick="@{() -> listener.onBtnSaveAyahClicked(ayah)}"
                             app:lottie_autoPlay="false"
                             app:lottie_loop="false"
                             app:lottie_rawRes="@raw/heart6" />
                     </LinearLayout>
-
                     <TextView
+                        android:text="يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا تَدَايَنْتُمْ بِدَيْنٍ إِلَىٰ أَجَلٍ مُسَمًّى فَاكْتُبُوهُ وَلْيَكْتُبْ بَيْنَكُمْ كَاتِبٌ بِالْعَدْلِ وَلَا يَأْبَ كَاتِبٌ أَنْ يَكْتُبَ كَمَا عَلَّمَهُ اللَّهُ فَلْيَكْتُبْ وَلْيُمْلِلِ الَّذِي عَلَيْهِ الْحَقُّ وَلْيَتَّقِ اللَّهَ رَبَّهُ وَلَا يَبْخَسْ مِنْهُ شَيْئًا فَإِنْ كَانَ الَّذِي عَلَيْهِ الْحَقُّ سَفِيهًا أَوْ ضَعِيفًا أَوْ لَا يَسْتَطِيعُ أَنْ يُمِلَّ هُوَ فَلْيُمْلِلْ وَلِيُّهُ بِالْعَدْلِ وَاسْتَشْهِدُوا شَهِيدَيْنِ مِنْ رِجَالِكُمْ فَإِنْ لَمْ يَكُونَا رَجُلَيْنِ فَرَجُلٌ وَامْرَأَتَانِ مِمَّنْ تَرْضَوْنَ مِنَ الشُّهَدَاءِ أَنْ تَضِلَّ إِحْدَاهُمَا فَتُذَكِّرَ إِحْدَاهُمَا الْأُخْرَىٰ وَلَا يَأْبَ الشُّهَدَاءُ إِذَا مَا دُعُوا وَلَا تَسْأَمُوا أَنْ تَكْتُبُوهُ صَغِيرًا أَوْ كَبِيرًا إِلَىٰ أَجَلِهِ ذَٰلِكُمْ أَقْسَطُ عِنْدَ اللَّهِ وَأَقْوَمُ لِلشَّهَادَةِ وَأَدْنَىٰ أَلَّا تَرْتَابُوا إِلَّا أَنْ تَكُونَ تِجَارَةً حَاضِرَةً تُدِيرُونَهَا بَيْنَكُمْ فَلَيْسَ عَلَيْكُمْ جُنَاحٌ أَلَّا تَكْتُبُوهَا وَأَشْهِدُوا إِذَا تَبَايَعْتُمْ وَلَا يُضَارَّ كَاتِبٌ وَلَا شَهِيدٌ وَإِنْ تَفْعَلُوا فَإِنَّهُ فُسُوقٌ بِكُمْ وَاتَّقُوا اللَّهَ وَيُعَلِّمُكُمُ اللَّهُ وَاللَّهُ بِكُلِّ شَيْءٍ عَلِيمٌ"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                        android:layout_marginEnd="@dimen/_5sdp"
                         android:id="@+id/aya_rcv_layout_txtAyaArabic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
                         android:fontFamily="@font/hafs"
                         setAyaText="@{ayah}"
+                        android:maxLines="3"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_16ssp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                        android:textSize="@dimen/_12ssp"
+                        />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/aya_rcv_item_btn_more"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
+                        android:layout_marginTop="5sp"
                         android:background="@drawable/player_scroll_btn_selector"
                         android:drawableBottom="@drawable/baseline_arrow_drop_down_24"
                         app:layout_constraintEnd_toEndOf="parent"

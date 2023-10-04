@@ -34,6 +34,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.example.domain.entity.quran_audio.Ayah
 import com.example.domain.entity.quran_audio.Surah
+import com.example.domain.usecase.GetTafsirForAya
 import com.example.ramadan_kareem.R
 import com.example.ramadan_kareem.databinding.FragmentSurahAyasViewerBinding
 import com.example.ramadan_kareem.databinding.FragmentSurahViewerBinding
@@ -51,6 +52,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -68,7 +70,10 @@ class Surah_ayas_viewer(private val surahFromQuran: Surah) : BottomSheetDialogFr
     private lateinit var handler: Handler
     private var isDefaultState = true  // Initial state
     private var isAutoPlayNext = false
-    private var adapter:AyaCustomAdapter?=null
+    private var adapter: AyaCustomAdapter? = null
+
+    @Inject
+    lateinit var getTafsirForAya: GetTafsirForAya
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,10 +89,8 @@ class Surah_ayas_viewer(private val surahFromQuran: Surah) : BottomSheetDialogFr
             .apply {
                 this.surah = surahFromQuran
             }
-        setAdapterItems()
         handler = Handler(Looper.getMainLooper())
 
-        //handle click in location camera btn
         sheetBehavior = BottomSheetBehavior.from(binding!!.playerBottomSheetLayout)
 
 
@@ -105,20 +108,63 @@ class Surah_ayas_viewer(private val surahFromQuran: Surah) : BottomSheetDialogFr
         }
 
         binding!!.playerBtnScrollCard.setOnClickListener {
-            if (isExpanded){
+            if (isExpanded) {
                 shrinkFab()
-            }else if (mediaPlayer != null && !isExpanded){
+            } else if (mediaPlayer != null && !isExpanded) {
                 expandFab()
+
             }
         }
+        binding!!.quranAyaAudionProgressBtnNext.setOnClickListener {
+            if (currantAya != null) {
+                resetMediaPlayer()
+                nextAya = surahFromQuran.ayahs[currantAya!!.numberInSurah]
+                scrollToCenter(binding!!.surahAyaViewrRcv, nextAya!!.numberInSurah-1)
+                binding!!.quranAyaAudionProgressTxtAyaNumber.setText(nextAya!!.numberInSurah.toString())
+                lifecycleScope.launch(Dispatchers.IO) {
+                    loadAudio(nextAya!!)
+                }
+            }
+        }
+
+        binding!!.quranAyaAudionProgressBtnPrevios.setOnClickListener {
+            if (currantAya != null) {
+                resetMediaPlayer()
+                nextAya = surahFromQuran.ayahs[currantAya!!.numberInSurah-2]
+                binding!!.quranAyaAudionProgressTxtAyaNumber.setText(nextAya!!.numberInSurah.toString())
+                scrollToCenter(binding!!.surahAyaViewrRcv, nextAya!!.numberInSurah-1)
+
+                lifecycleScope.launch(Dispatchers.IO) {
+                    loadAudio(nextAya!!)
+                }
+            }
+        }
+        binding!!.quranAyaAudionProgressBtnStop.setOnClickListener {
+            resetMediaPlayer()
+            currantAya=null
+            nextAya=null
+            shrinkFab()
+        }
+        binding!!.root.postDelayed({
+            setAdapterItems()
+        }, 1000)
+
+
+
 
 
         return binding!!.root
     }
 
     private fun setAdapterItems() {
-        adapter = AyaCustomAdapter(requireContext(), surahFromQuran, this)
+        adapter = AyaCustomAdapter(getTafsirForAya,requireContext(), surahFromQuran, this, childFragmentManager)
         binding!!.surahAyaViewrRcv.adapter = adapter
+        resetRCVLayout()
+    }
+
+    private fun resetRCVLayout() {
+        binding!!.surahAyaViewrRcv.visibility = View.VISIBLE
+        binding!!.facbookAyaShimmer.visibility = View.GONE
     }
 
     private fun setupFullHeight(bottomSheet: View) {
@@ -164,7 +210,7 @@ class Surah_ayas_viewer(private val surahFromQuran: Surah) : BottomSheetDialogFr
 //                audioUrl = it
 //                // Start loading audio using a coroutine
 ////                val context = coroutineContext
-////                if (audioUrl!=""){
+////                if (audioUrlf!=""){
 ////                    val bottomSheetFragment = QuranAyaAudioProgress(surahFromQuran.name,audioUrl,ayah.numberInSurah,context!!)
 ////                    bottomSheetFragment.show(requireActivity().supportFragmentManager, "QuranAyaAudioProgress")
 ////                }
@@ -185,6 +231,8 @@ class Surah_ayas_viewer(private val surahFromQuran: Surah) : BottomSheetDialogFr
     companion object {
         var audioUrl = ""
         var mediaPlayer: MediaPlayer? = null
+        var currantAya: Ayah? = null
+        var nextAya: Ayah? = null
     }
 
     override fun onDestroy() {
@@ -207,14 +255,24 @@ class Surah_ayas_viewer(private val surahFromQuran: Surah) : BottomSheetDialogFr
 
     private fun expandFab() {
         sheetBehavior!!.setState(BottomSheetBehavior.STATE_EXPANDED);
-        binding!!.playerBtnScrollCard.setCompoundDrawablesWithIntrinsicBounds(null,requireContext().getDrawable(R.drawable.baseline_arrow_drop_down_24),null,null)
+        binding!!.playerBtnScrollCard.setCompoundDrawablesWithIntrinsicBounds(
+            null,
+            requireContext().getDrawable(R.drawable.baseline_arrow_drop_down_24),
+            null,
+            null
+        )
         isExpanded = !isExpanded
 
     }
 
     private fun shrinkFab() {
         isExpanded = !isExpanded
-        binding!!.playerBtnScrollCard.setCompoundDrawablesWithIntrinsicBounds(null,requireContext().getDrawable(R.drawable.baseline_arrow_drop_down_24),null,null)
+        binding!!.playerBtnScrollCard.setCompoundDrawablesWithIntrinsicBounds(
+            null,
+            requireContext().getDrawable(R.drawable.baseline_arrow_drop_up_24),
+            null,
+            null
+        )
 
         sheetBehavior!!.setState(BottomSheetBehavior.STATE_COLLAPSED);
 
@@ -257,16 +315,17 @@ class Surah_ayas_viewer(private val surahFromQuran: Surah) : BottomSheetDialogFr
                 setDataSource(ayah.audio)
                 prepare()
                 setOnCompletionListener {
-                    if (isAutoPlayNext && ayah.numberInSurah <= surahFromQuran.ayahs.size){
-                            lifecycleScope.launch (Dispatchers.IO){
-                                loadAudio(surahFromQuran.ayahs[ayah.numberInSurah])
-                                lifecycleScope.launch(Dispatchers.Main){
-                                    binding!!.quranAyaAudionProgressTxtAyaNumber.text=ayah.numberInSurah.toString()
+                    if (isAutoPlayNext && ayah.numberInSurah <= surahFromQuran.ayahs.size) {
+                        lifecycleScope.launch(Dispatchers.IO) {
+                            loadAudio(surahFromQuran.ayahs[ayah.numberInSurah])
+                            lifecycleScope.launch(Dispatchers.Main) {
+                                binding!!.quranAyaAudionProgressTxtAyaNumber.text =
+                                    ayah.numberInSurah.toString()
 //                                    binding!!.surahAyaViewrRcv.smoothScrollToPosition(ayah.numberInSurah)
-                                    scrollToCenter(binding!!.surahAyaViewrRcv,ayah.numberInSurah)
-                                }
+                                scrollToCenter(binding!!.surahAyaViewrRcv, ayah.numberInSurah)
                             }
-                    }else{
+                        }
+                    } else {
                         shrinkFab()
                     }
                 }
@@ -275,13 +334,15 @@ class Surah_ayas_viewer(private val surahFromQuran: Surah) : BottomSheetDialogFr
             e.printStackTrace()
             null
         }
-        binding!!.quranAyaAudionProgresslinearProgressIndicator.max=0
+        binding!!.quranAyaAudionProgresslinearProgressIndicator.max = 0
         ayaDuraion = mediaPlayer!!.duration
         mediaPlayer!!.start()
         binding!!.quranAyaAudionProgresslinearProgressIndicator.max = mediaPlayer!!.duration
         handler.post(updateProgressBar)
+        currantAya = ayah
 
-   }
+    }
+
     fun scrollToCenter(recyclerView: RecyclerView, position: Int) {
         recyclerView.post {
             val smoothScroller = object : LinearSmoothScroller(recyclerView.context) {

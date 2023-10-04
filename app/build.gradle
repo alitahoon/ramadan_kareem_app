@@ -137,6 +137,12 @@ dependencies {
     //RCV item foldingcell
     implementation("com.ramotion.foldingcell:folding-cell:1.2.3")
 
+
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    //for calculate duration between 2 local time
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.4.6'
+
     implementation project(path: ':data')
     implementation project(path: ':domain')
 

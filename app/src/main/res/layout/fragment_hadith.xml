@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/_6sdp"
             android:text="الأحاديث"
-            android:textColor="@color/homeCardViewIconColorDark"
+            android:textColor="@color/icon_yello"
             android:textSize="@dimen/_18ssp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

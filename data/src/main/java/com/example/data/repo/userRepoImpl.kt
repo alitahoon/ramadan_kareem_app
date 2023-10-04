@@ -16,6 +16,7 @@ import com.example.domain.entity.hadith.HadithResponse
 import com.example.domain.entity.quran.QuranResponse
 import com.example.domain.entity.quran_audio.QuranAudioResponse
 import com.example.domain.entity.quran_en.QuranEnglishResponse
+import com.example.domain.entity.tafsir.TafsirResponse
 import com.example.domain.repo.UserRepo
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -47,6 +48,24 @@ class userRepoImpl(
             result.invoke(Resource.Failure("failed to get hadieth ${response.body()}"))
         }
 
+    }
+
+    override suspend fun getTafsirForAya(
+        tafseer_id: Int,
+        sura_number: Int,
+        ayah_number: Int,
+        result: (Resource<TafsirResponse>) -> Unit
+    ) {
+        val response=apiTafsirService.getAzanTimes(tafseer_id,sura_number,ayah_number)
+        if (response.isSuccessful){
+            if (response.body() != null){
+                result.invoke(Resource.Success(response.body()!!))
+            }else{
+                result.invoke(Resource.Failure("response body is null"))
+            }
+        }else{
+            result.invoke(Resource.Failure("failed to get tafsir -> ${response.errorBody()}"))
+        }
     }
 
     override suspend fun getAzanFromRemote(

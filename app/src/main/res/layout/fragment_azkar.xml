@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/homeBackgroundColorDark"
+    android:background="@drawable/background_sh_2"
     tools:context=".ui.Azkar">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/_6sdp"
             android:text="الأذكار"
-            android:textColor="@color/homeCardViewIconColorDark"
+            android:textColor="@color/white"
             android:textSize="@dimen/_18ssp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

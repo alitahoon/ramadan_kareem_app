@@ -15,23 +15,29 @@ import com.example.ramadan_kareem.util.SurahItemListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
 @AndroidEntryPoint
-class AlQuran : Fragment() ,SurahItemListener{
-    private var binding:FragmentAlQuranBinding?=null
-    private val alQuranViewModel:AlQuranViewModel by activityViewModels()
-    private val TAG="AlQuran"
+class AlQuran : Fragment(), SurahItemListener {
+    private var binding: FragmentAlQuranBinding? = null
+    private val alQuranViewModel: AlQuranViewModel by activityViewModels()
+    private val TAG = "AlQuran"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        alQuranViewModel.getQuran()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentAlQuranBinding.inflate(inflater,container,false)
+        binding = FragmentAlQuranBinding.inflate(inflater, container, false)
             .apply {
-               this.viewmodel=alQuranViewModel
+                this.viewmodel = alQuranViewModel
             }
+        binding!!.root.postDelayed({
+            setObservers()
+        }, 500)
+
 
 
         return binding!!.root
@@ -39,36 +45,40 @@ class AlQuran : Fragment() ,SurahItemListener{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        alQuranViewModel.getQuran()
-        setObservers()
+
 
     }
 
 
-
     private fun setObservers() {
-        lifecycleScope.launch (Dispatchers.IO) {
-            alQuranViewModel.quran.collect{
-                when(it){
-                    is Resource.Success->{
+        lifecycleScope.launch(Dispatchers.IO) {
+            alQuranViewModel.quran.collect {
+                when (it) {
+                    is Resource.Success -> {
 
-                        Log.i(TAG,"${it.data}")
-                        lifecycleScope.launch(Dispatchers.Main){
-                            binding!!.alQuranRcvQuran.adapter=QuranCustomAdapter(requireContext(),it.data.data.surahs,this@AlQuran)
-                            binding!!.alQuranProhressbar.visibility=View.INVISIBLE
-                            binding!!.alQuranRcvQuran.visibility=View.VISIBLE
+                        Log.i(TAG, "${it.data}")
+                        lifecycleScope.launch(Dispatchers.Main) {
+                            binding!!.alQuranRcvQuran.adapter = QuranCustomAdapter(
+                                requireContext(),
+                                it.data.data.surahs,
+                                this@AlQuran
+                            )
+                            binding!!.alQuranRcvShimmer.visibility = View.INVISIBLE
+                            binding!!.alQuranRcvQuran.visibility = View.VISIBLE
                         }
 
                     }
-                    is Resource.Failure->{
-                        Log.e(TAG,"${it.error}")
-                        binding!!.alQuranRcvQuran.visibility=View.VISIBLE
-                        binding!!.alQuranProhressbar.visibility=View.INVISIBLE
+
+                    is Resource.Failure -> {
+                        Log.e(TAG, "${it.error}")
+                        binding!!.alQuranRcvQuran.visibility = View.VISIBLE
+                        binding!!.alQuranRcvShimmer.visibility = View.INVISIBLE
                     }
-                    is Resource.Loading->{
-                        Log.i(TAG,"getting qran from api")
-                        binding!!.alQuranProhressbar.visibility=View.VISIBLE
-                        binding!!.alQuranRcvQuran.visibility=View.INVISIBLE
+
+                    is Resource.Loading -> {
+                        Log.i(TAG, "getting qran from api")
+                        binding!!.alQuranRcvShimmer.visibility = View.VISIBLE
+                        binding!!.alQuranRcvQuran.visibility = View.INVISIBLE
                     }
 
                     else -> {}
