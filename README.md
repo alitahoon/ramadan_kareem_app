@@ -1,10 +1,10 @@
 # Ramadan Kareem App
-An application to alert the dates of Suhoor and Iftar in the month of Ramadan, and it deals with some hadiths and Quranic verses
+An application to alert the dates of Suhoor and Iftar in the month of Ramadan, and it deals with some hadiths and Quranic verses.
 https://github.com/user-attachments/assets/1c1549c5-1cb0-44f2-8e27-09000700fe2c
 
 ## Application Features
 - The Holy Qur’an is complete in audio and text   
-  - You can browse the verse, learn its interpretation, and hear the voice of its recitation
+  - You can browse the verse, learn its interpretation, and hear the voice of its recitation.
 
 
 https://github.com/user-attachments/assets/5631087a-9ba2-4129-aed7-be93fc803f43
