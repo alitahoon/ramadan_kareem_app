@@ -37,4 +37,4 @@ https://github.com/user-attachments/assets/5631087a-9ba2-4129-aed7-be93fc803f43
 - integration with multi APIs
   - quran api
   - hadeth api
-  - azkar api no i mean refactore this code with githup redmi style code 
+  - azkar api 
