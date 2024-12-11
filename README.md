@@ -12,13 +12,13 @@ https://github.com/user-attachments/assets/5631087a-9ba2-4129-aed7-be93fc803f43
 
 -Many morning and evening azkar
 
-<img src="https://github.com/user-attachments/assets/8a87efc6-664e-4f6a-b56d-b67f81f82326" width="500" />
+<img src="https://github.com/user-attachments/assets/8a87efc6-664e-4f6a-b56d-b67f81f82326" width="200" height ="400" />
 
-![photo_2024-12-11_23-38-19](https://github.com/user-attachments/assets/af012c28-6488-4b8d-b906-e5392061d311)
+<img src "https://github.com/user-attachments/assets/af012c28-6488-4b8d-b906-e5392061d311" width="200" height ="400" />
 
 -Alarm on prayer times 
+<img src "https://github.com/user-attachments/assets/237d1cc3-90ff-4e32-b6fa-d1e8501b2712" width="200" height ="400" />
 
-![photo_2024-12-11_23-39-07](https://github.com/user-attachments/assets/237d1cc3-90ff-4e32-b6fa-d1e8501b2712)
 
 
 ## Android Technology
