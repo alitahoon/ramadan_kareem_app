@@ -12,7 +12,7 @@ https://github.com/user-attachments/assets/5631087a-9ba2-4129-aed7-be93fc803f43
 
 -Many morning and evening azkar
 
-![photo_2024-12-11_23-38-01](https://github.com/user-attachments/assets/8a87efc6-664e-4f6a-b56d-b67f81f82326)
+<img src="https://github.com/user-attachments/assets/8a87efc6-664e-4f6a-b56d-b67f81f82326" width="500" />
 
 ![photo_2024-12-11_23-38-19](https://github.com/user-attachments/assets/af012c28-6488-4b8d-b906-e5392061d311)
 
